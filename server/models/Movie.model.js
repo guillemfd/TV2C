@@ -8,6 +8,7 @@ const movieSchema = new Schema(
     poster_path: { type: String },
     vote_average: { type: Number },
     release_date: { type: String },
+    favorite_by: [{ type: Schema.Types.ObjectId, ref: "User" }],
   },
   {
     timestamps: true,
