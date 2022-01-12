@@ -1,3 +1,4 @@
+import './NavBar.css'
 import { Navbar, Nav, Container, NavDropdown, Form, FormControl, Button} from 'react-bootstrap'
 import { Link, NavLink } from 'react-router-dom'
 
@@ -16,7 +17,7 @@ function NavBar() {
                     className="me-1"
                     aria-label="Search"
                     />
-                    <Button variant="outline-primary">Search</Button>
+                    <Button variant="info">Search</Button>
                 </Form>
 
                 <Nav>
