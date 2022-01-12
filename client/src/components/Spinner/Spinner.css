@@ -1,13 +1,12 @@
 
-  
-  .spinner-container {
+.spinner-container {
     width: 100%;
     min-height: 100vh;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    background: #000;
+    /* background: #000; */
   }
   
   .spinner-wrapper {
@@ -33,30 +32,37 @@
     width: 100px;
     height: 100px;
     transform: translateZ(0);
-    border-radius: 50%;
-    box-shadow: inset 0 0 0 25px #030097;
+    /* border-radius: 50%;
+    box-shadow: inset 0 0 0 25px #333333; */
   }
-  
-  .circle15:before,
-  .circle15:after {
+
+  .circle15:before {
     position: absolute;
     border-radius: 50%;
-    content: "";
+    content: "Series";
+    color:rgb(255, 0, 212);
+    font-weight: 900;
     width: 50%;
     height: 100%;
-  }
-  .circle15:before {
-    top: 0;
+    top: 32px;
     left: 0;
-    background: #000;
+    background: rgba(132, 255, 116, 0.472);
     border-radius: 100px 0 0 100px;
     transform-origin: center right;
     animation: effect15 2s infinite ease 1.5s;
   }
+
   .circle15:after {
-    top: 0;
+    position: absolute;
+    border-radius: 50%;
+    content: "Movies";
+    color:rgb(238, 255, 0);
+    font-weight: 900;
+    width: 50%;
+    height: 100%;
+    top: -20px;
     right: 0;
-    background: #000;
+    background: rgba(255, 0, 0, 0.513);
     border-radius: 0 100px 100px 0;
     transform-origin: center left;
     animation: effect15 2s infinite ease;

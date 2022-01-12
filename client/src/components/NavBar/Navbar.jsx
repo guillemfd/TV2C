@@ -56,6 +56,13 @@ function NavBar() {
                         <NavDropdown.Divider />
                         <NavDropdown.Item href="#action/3.3">Log Out</NavDropdown.Item>
                     </NavDropdown>
+
+                    <Navbar.Collapse className="justify-content-end">
+                        <Navbar.Text>
+                            Signed in as: <a href="/user">Guillem</a>
+                        </Navbar.Text>
+                    </Navbar.Collapse>
+
                 </Nav>
                 </Navbar.Collapse>
             </Container>
