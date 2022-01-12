@@ -1,3 +1,4 @@
+import './PopularMovies.css'
 import  { useState, useEffect } from 'react'
 import { mostPopular } from '../../services/movies.service'
 import Spinner from '../Spinner/Spinner'
@@ -42,23 +43,28 @@ function PopularMovies(props) {
     console.log(popularMovies)
 
     return (
-        <div>
-            <h1>Holaaaa</h1>
-            
-            
-            <hr/>
-            {/* isLoading ? <Spinner /> : */}
+        <div className="card-preContainer">
+            {/* isLoading === true ? <Spinner /> : */}
                 {popularMovies.map((movie) => (
-                    <div key={movie._id} className="card">
-                        <img src={IMG_API + movie.poster_path} style={{width: '200px'}} alt="apartment" />
-                        <h3>{movie.title}</h3>
-                        <p>Overview: {movie.overview}</p>
-                        <hr/>
+                    <div className="card-container" key={movie._id}>
+                        <img className="movie-cover" src={IMG_API + movie.poster_path} alt={movie.title}/>
+                        <div className="movie-card">
+                            <span className="card-text">{movie.title}</span>
+                            <h5>{movie.overview}</h5>
+                            <button>See More</button>
+                        </div>
                     </div>
                 ))}
-
         </div>
+
     )
 }
 
 export default PopularMovies
+
+                    // {/* <div key={movie._id} className="card">
+                    //     <img src={IMG_API + movie.poster_path} style={{width: '200px'}} alt="apartment" />
+                    //     <h3>{movie.title}</h3>
+                    //     <p>Overview: {movie.overview}</p>
+                    //     <hr/>
+                    // </div> */}
