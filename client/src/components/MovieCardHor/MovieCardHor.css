@@ -1,0 +1,12 @@
+
+.card-containerHor{
+    width: 180px; 
+    height: 250px;
+    margin: 1rem;
+    box-shadow: 2px 8px 6px #1b1b1b;
+}
+
+.movie-coverHor {
+    width: 180px; 
+    height: 250px;
+}

@@ -1,0 +1,34 @@
+body {
+    background-color: rgb(78, 144, 153);
+}
+
+.HorizontalScrollContainer {
+    width: 1200px;
+    height: 300px;
+    margin: 50px;
+}
+
+.HorizontalMain {
+    width: 600px;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.HorizontalBG1 {
+    background-color: royalblue;
+}
+
+.HorizontalBG2 {
+    background-color: seagreen;
+}
+
+.HorizontalBG3 {
+    background-color: tomato;
+}
+
+.HorizontalBG4 {
+    background-color: yellow;
+}
