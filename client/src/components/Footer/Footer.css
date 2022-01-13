@@ -1,5 +1,5 @@
 .Footer {
-    position: fixed;
+    position: relative;
     bottom: 0;
     left: 0;
     width: 100%;
@@ -7,5 +7,5 @@
     color: white;
     background: rgb(33,37,41);
     font-size: 1em;
-    padding: 25px;
+    padding: 5px;
 }
