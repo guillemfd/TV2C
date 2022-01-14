@@ -1,9 +1,10 @@
 import './MovieDetailsPage.css'
 import { useEffect, useState } from "react"
-import { useParams } from "react-router-dom"
+import { useParams, Link } from "react-router-dom"
 import { getOneMovie } from "../../services/movies.service"
 import Spinner from "../../components/Spinner/Spinner"
 import {Carousel} from 'react-bootstrap'
+
 
 function MovieDetailsPage(props) {
 
@@ -23,6 +24,13 @@ function MovieDetailsPage(props) {
             .catch(err => console.log(err))
     }, [])
 
+    const convertRuntime = (num) => {
+        let hours = num / 60;
+        let rhours = Math.floor(hours);
+        let minutes = (hours - rhours) * 60;
+        let rminutes = Math.round(minutes);
+        return rhours + "h " + rminutes + "m";
+      };
 
     return (
 
@@ -63,12 +71,19 @@ function MovieDetailsPage(props) {
                     <h2 style={{fontWeight: '700'}}>{oneMovie.title}</h2>
                     <h4 style={{color: 'white', fontWeight: '200', marginBottom: '50px'}}>{oneMovie.tagline}</h4>
                     <p className="description">{oneMovie.overview}</p>
-                    <p className="description">Duration: {oneMovie.runtime} min.</p>
+                    <p className="description">Duration: {convertRuntime(oneMovie.runtime)} ({oneMovie.runtime}m.)</p>
                     <p className="description" style={{marginTop: '-15px'}}>It was released on {oneMovie.release_date}, with a budget of {oneMovie.budget} $.</p>
                     <p className="description">Average: {oneMovie.vote_average}</p>
                     <p className="description">
                         <img className="company-logo" src={IMG_API + oneMovie.production_companies[0].logo_path} alt={oneMovie.title}/>
                     </p>
+
+                    <Link to={`/mostPopular`}>
+                            <button className="card-button">Add to My List</button>
+                    </Link>
+                    <Link to={`/mostPopular`}>
+                            <button className="card-button">Already seen!</button>
+                    </Link>
 
                     
                     <a  className="description" href={oneMovie.homepage} target="_blank">Movie Homepage</a>

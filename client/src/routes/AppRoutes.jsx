@@ -9,8 +9,8 @@ function AppRoutes() {
     return (
         <Routes>
             <Route path="/" element={<HomePage />} />
-            <Route path="/mostPopular" element={<PopularMoviesPage />} />
-            <Route path="/getOneMovie/:TMDB_id" element={<MovieDetailsPage />} />
+            <Route path="/movies/mostPopular" element={<PopularMoviesPage />} />
+            <Route path="/movies/getOneMovie/:TMDB_id" element={<MovieDetailsPage />} />
             <Route path="/*" element={<h1>Page not found</h1>} />
         </Routes>
     )
