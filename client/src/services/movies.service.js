@@ -8,6 +8,6 @@ export function mostPopular() {
     return moviesService.get('/mostPopular')
 }
 
-export function getOneMovie(movieId) {
-    return moviesService.get(`/getOneMovie/${movieId}`)
+export function getOneMovie(TMDB_id) {
+    return moviesService.get(`/getOneMovie/${TMDB_id}`)
 }
