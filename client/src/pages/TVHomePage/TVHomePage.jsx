@@ -2,13 +2,13 @@ import { Container, Button } from "react-bootstrap"
 import { Link } from 'react-router-dom'
 
 
-function MoviesHomePage() {
+function TVHomePage() {
     return (
         <Container>
 
             <h1 style={{color: 'grey', textShadow: '2px 2px #000000', fontSize: '80px'}}>Select a list</h1>
             <hr/>
-            <Link to="/movies/mostPopular">
+            <Link to="/tv/mostPopular">
                 <Button variant="dark" size="xl">Most Popular</Button>
             </Link>
 
@@ -16,4 +16,4 @@ function MoviesHomePage() {
     )
 }
 
-export default MoviesHomePage
+export default TVHomePage

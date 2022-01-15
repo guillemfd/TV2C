@@ -32,7 +32,7 @@ router.get("/mostPopular", async (req, res, next) => {
 //això va a http://localhost:5005/api/movies/getOneMovie/:id
 router.get("/getOneMovie/:TMDB_id", async (req, res, next) => {
   try{
-    const axiosCall = await axios(`https://api.themoviedb.org/3/movie/${req.params.TMDB_id}?api_key=${process.env.API_KEY}`)
+    const axiosCall = await axios(`https://api.themoviedb.org/3/movie/${req.params.TMDB_id}?api_key=${process.env.API_KEY}&append_to_response=credits`)
     const results = axiosCall.data
     res.json(results);
   }

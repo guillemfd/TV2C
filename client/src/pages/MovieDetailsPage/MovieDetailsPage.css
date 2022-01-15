@@ -66,6 +66,45 @@
     bottom: 0;
     margin: auto auto;
 }
+
+.cast-container {
+  border: 1px solid lightblue;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 5px;
+}
+
+.cast-wrapper {
+  background-color: lightblue;
+  height: 156px;
+  display: flex;
+  justify-content: center;
+}
+
+.cast-card {
+  height: 130px;
+  flex-direction: row;
+  align-items: center;
+}
+
+.cast-text {
+  font-weight: bold;
+  font-size: 1.3em;
+  margin: 5px;
+}
+
+.cast-pic {
+  margin: 10px 10px 0px 10px;
+  height: 100px;
+  width: 65px;
+  border-radius: 15px;
+}
+
+.cast-name {
+  margin: 5px;
+  width: 100px;
+  line-height: 15px;
+}
   
   /* ul {
     padding: 0px;

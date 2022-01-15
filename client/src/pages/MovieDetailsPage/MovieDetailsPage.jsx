@@ -69,7 +69,7 @@ function MovieDetailsPage(props) {
 
                 <div className="profile_desc_section">
                     <h2 style={{fontWeight: '700'}}>{oneMovie.title}</h2>
-                    <h4 style={{color: 'white', fontWeight: '200', marginBottom: '50px'}}>{oneMovie.tagline}</h4>
+                    <h4 style={{color: 'white', fontWeight: '200', marginBottom: '25px'}}>{oneMovie.tagline}</h4>
                     <p className="description">{oneMovie.overview}</p>
                     <p className="description">Duration: {convertRuntime(oneMovie.runtime)} ({oneMovie.runtime}m.)</p>
                     <p className="description" style={{marginTop: '-15px'}}>It was released on {oneMovie.release_date}, with a budget of {oneMovie.budget} $.</p>
@@ -86,13 +86,43 @@ function MovieDetailsPage(props) {
                     </Link>
 
                     
-                    <a  className="description" href={oneMovie.homepage} target="_blank">Movie Homepage</a>
+                    <a className="description" href={oneMovie.homepage} target="_blank" rel="noreferrer noopener">Movie Homepage</a>
+
+                    <div className='cast-container'>
+                        <p className='cast-text'>Most relevant actors:</p>
+                        <div className='cast-wrapper'>
+                            <div className="cast-card">
+                                <img className="cast-pic" src={IMG_API + oneMovie.credits.cast[0].profile_path} alt={oneMovie.credits.cast[0].name}/>
+                                <p className="cast-name">{oneMovie.credits.cast[0].name}</p>
+                            </div>
+                            <div className="cast-card">
+                                <img className="cast-pic" src={IMG_API + oneMovie.credits.cast[1].profile_path} alt={oneMovie.credits.cast[0].name}/>
+                                <p className="cast-name">{oneMovie.credits.cast[1].name}</p>
+                            </div>
+                            <div className="cast-card">
+                                <img className="cast-pic" src={IMG_API + oneMovie.credits.cast[2].profile_path} alt={oneMovie.credits.cast[0].name}/>
+                                <p className="cast-name">{oneMovie.credits.cast[2].name}</p>
+                            </div>
+                            <div className="cast-card">
+                                <img className="cast-pic" src={IMG_API + oneMovie.credits.cast[3].profile_path} alt={oneMovie.credits.cast[0].name}/>
+                                <p className="cast-name">{oneMovie.credits.cast[3].name}</p>
+                            </div>
+                            <div className="cast-card">
+                                <img className="cast-pic" src={IMG_API + oneMovie.credits.cast[4].profile_path} alt={oneMovie.credits.cast[0].name}/>
+                                <p className="cast-name">{oneMovie.credits.cast[4].name}</p>
+                            </div>
+                            <div className="cast-card">
+                                <img className="cast-pic" src={IMG_API + oneMovie.credits.cast[5].profile_path} alt={oneMovie.credits.cast[0].name}/>
+                                <p className="cast-name">{oneMovie.credits.cast[5].name}</p>
+                            </div>
+                        </div>
+                    </div>
 
                     <div className="interests">
                         <span className="interests_item">{oneMovie.genres[0].name}</span>
                         <span className="interests_item">{oneMovie.genres[1].name}</span>
                         <span className="interests_item">{oneMovie.genres[2].name}</span>
-                        {/* <span className="interests_item">{`${oneMovie.genres[3].name}` ? `{oneMovie.genres[3].name}` : ""}</span> */}
+                        {/* <span className="interests_item">{{oneMovie.genres[3].name} ? {oneMovie.genres[3].name} : ""}</span> */}
                     </div>
                 </div>
             </section>

@@ -6,10 +6,11 @@ const router = require("express").Router();
 // });
 
 
-const moviesRoutes = require('./movies.routes')
-router.use('/movies', moviesRoutes)
+const moviesRoutes = require('./movies.routes');
+router.use('/movies', moviesRoutes);
 
-
+const tvRoutes = require('./tv.routes');
+// router.use('/tv', tvRoutes);
 
 // You put the next routes here 👇
 // example: router.use("/auth", authRoutes)
