@@ -42,4 +42,28 @@ router.get("/getOneMovie/:TMDB_id", async (req, res, next) => {
 })
 
 
+//-------------------- TV -------------------- TV -------------------- TV -------------------- TV -------------------- TV --------------
+router.get("/tv/mostPopular", async (req, res, next) => {
+    try{
+      const axiosCall = await axios(`https://api.themoviedb.org/3/tv/popular?api_key=${process.env.API_KEY}`)
+      const results = axiosCall.data.results
+      res.json(results);
+    }
+    catch(err){
+      console.log(err)
+    }
+  
+})
+
+router.get("/getOneTV/:TMDB_id", async (req, res, next) => {
+  try{
+    const axiosCall = await axios(`https://api.themoviedb.org/3/tv/${req.params.TMDB_id}?api_key=${process.env.API_KEY}&append_to_response=credits`)
+    const results = axiosCall.data
+    res.json(results);
+  }
+  catch(err){
+    console.log(err)
+  }
+})
+
 module.exports = router

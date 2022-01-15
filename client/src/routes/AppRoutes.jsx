@@ -4,6 +4,8 @@ import PopularMoviesPage from '../pages/PopularMoviesPage/PopularMoviesPage'
 import MovieDetailsPage from '../pages/MovieDetailsPage/MovieDetailsPage'
 import MoviesHomePage from '../pages/MoviesHomePage/MoviesHomePage'
 import TVHomePage from '../pages/TVHomePage/TVHomePage'
+import PopularTVPage from '../pages/PopularTVPage/PopularTVPage'
+import TVDetailsPage from '../pages/TVDetailsPage/TVDetailsPage'
 
 
 function AppRoutes() {
@@ -17,6 +19,10 @@ function AppRoutes() {
             <Route path="/movies/getOneMovie/:TMDB_id" element={<MovieDetailsPage />} />
 
             <Route path="/tv" element={<TVHomePage />} />
+            <Route path="/tv/mostPopular" element={<PopularTVPage />} />
+            <Route path="/getOneTV/:TMDB_id" element={<TVDetailsPage />} />
+
+
 
             <Route path="/*" element={<h1>Page not found</h1>} />
         </Routes>
