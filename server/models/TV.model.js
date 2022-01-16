@@ -3,7 +3,7 @@ const { Schema, model } = require("mongoose");
 const TVSchema = new Schema(
   {
     TMDB_id: { type: String, unique: true },
-    name: { type: String, required },
+    name: { type: String, required: true },
     // overview: { type: String },
     poster_path: { type: String },
     // vote_average: { type: Number },

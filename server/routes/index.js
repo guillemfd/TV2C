@@ -12,6 +12,9 @@ router.use('/movies', moviesRoutes);
 const tvRoutes = require('./tv.routes');
 // router.use('/tv', tvRoutes);
 
+const authRoutes = require('./auth.routes');
+router.use('/auth', authRoutes)
+
 // You put the next routes here 👇
 // example: router.use("/auth", authRoutes)
 

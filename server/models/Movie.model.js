@@ -2,8 +2,8 @@ const { Schema, model } = require("mongoose");
 
 const movieSchema = new Schema(
   {
-    TMDB_id: { type: String, required, unique: true },
-    title: { type: String, required },
+    TMDB_id: { type: String, required: true, unique: true },
+    title: { type: String, required: true },
     // overview: { type: String },
     poster_path: { type: String },
     // vote_average: { type: Number },
