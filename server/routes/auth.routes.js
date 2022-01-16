@@ -6,9 +6,11 @@ const User = require("../models/User.model");
 const router = express.Router();
 const saltRounds = 10;
 
+const { isAuthenticated } = require('./../middlewares/jwt.middleware')
 
 
-// POST /auth/signup  - Creates a new user in the database
+
+// POST /auth/signup  - Creates a new user in the database -------------------------------------------------------------------------
 router.post('/signup', (req, res) => {
 const { username, password, email } = req.body;
 
@@ -72,7 +74,7 @@ User
 
 // POST  /auth/login - Verifies email and password and returns a JWT --------------------------------------------
 router.post('/login', (req, res, next) => {
-    const { username, password } = req.body;
+    const { username, password, email } = req.body;
   
     // Check if email or password are provided as empty string 
     if (username === '' || password === '') {
@@ -99,7 +101,7 @@ router.post('/login', (req, res, next) => {
             const { _id, username } = foundUser;
             
             // Create an object that will be set as the token payload. This is the data that will be sent to the front.
-            const payload = { _id, username };
+            const payload = { _id, username, email };
     
             // Create and sign the token
             const authToken = jwt.sign( 
@@ -118,14 +120,19 @@ router.post('/login', (req, res, next) => {
         })
       .catch(err => res.status(500).json({ message: "Internal Server Error" }));
 });
-  
-  
-  // ...
-  
 
 
-// GET  /auth/verify
-// ...
+// GET  /auth/verify  -  Used to verify JWT stored on the client
+router.get('/verify', isAuthenticated, (req, res, next) => {       // <== CREATE NEW ROUTE ----------------------------------
+ 
+    // If JWT token is valid the payload gets decoded by the
+    // isAuthenticated middleware and made available on `req.payload`
+    console.log(`req.payload`, req.payload);
+   
+    // Send back the object with user data
+    // previously set as the token payload
+    res.status(200).json(req.payload);
+  });
 
 
 module.exports = router;
