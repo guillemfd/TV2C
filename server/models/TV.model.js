@@ -1,9 +1,9 @@
 const { Schema, model } = require("mongoose");
 
-const movieSchema = new Schema(
+const TVSchema = new Schema(
   {
-    TMDB_id: { type: String, required, unique: true },
-    title: { type: String, required },
+    TMDB_id: { type: String, unique: true },
+    name: { type: String, required },
     // overview: { type: String },
     poster_path: { type: String },
     // vote_average: { type: Number },
@@ -15,6 +15,6 @@ const movieSchema = new Schema(
   }
 );
 
-const Movie = model("Movie", movieSchema);
+const TV = model("TV", TVSchema);
 
-module.exports = Movie;
+module.exports = TV;
