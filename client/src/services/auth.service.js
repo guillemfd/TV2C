@@ -15,3 +15,7 @@ export function login(credentials) {
 export function verify(token) {
     return authService.get('/verify', { headers: { Authorization: `Bearer ${token}`} })
 }
+
+export function getUserData(userId) {
+    return authService.get(`/myprofile/${userId}`)
+}

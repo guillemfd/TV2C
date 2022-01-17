@@ -140,7 +140,7 @@ function NavBar() {
                                     <span className='dropdown-item' style={{textAlign: 'left', fontWeight: 'bold'}}>{user?.username}{user?.email}</span>
                                 </NavDropdown.Item>
                                 <NavDropdown.Item >
-                                    <Link to="/myprofile" className='dropdown-item'>My Profile</Link>
+                                    <Link to={`/myprofile/${user._id}`} className='dropdown-item'>My Profile</Link>
                                 </NavDropdown.Item>
                                 <NavDropdown.Item >
                                     <Link to="/editprofile" className='dropdown-item'>Edit Profile</Link>

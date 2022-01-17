@@ -8,6 +8,7 @@ import PopularTVPage from '../pages/PopularTVPage/PopularTVPage'
 import TVDetailsPage from '../pages/TVDetailsPage/TVDetailsPage'
 import SignUpPage from '../pages/SignUpPage/SignUpPage'
 import LogInPage from '../pages/LogInPage/LogInPage'
+import ProfileDetailsPage from '../pages/ProfileDetailsPage/ProfileDetailsPage'
 
 
 
@@ -19,6 +20,8 @@ function AppRoutes() {
 
             <Route path="/signup" element={<SignUpPage />} />
             <Route path="/login" element={<LogInPage />} />
+            <Route path="/myprofile/:userId" element={<ProfileDetailsPage />} />
+
 
 
             <Route path="/movies" element={<MoviesHomePage />} />
