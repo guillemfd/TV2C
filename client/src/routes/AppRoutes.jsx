@@ -6,6 +6,7 @@ import MoviesHomePage from '../pages/MoviesHomePage/MoviesHomePage'
 import TVHomePage from '../pages/TVHomePage/TVHomePage'
 import PopularTVPage from '../pages/PopularTVPage/PopularTVPage'
 import TVDetailsPage from '../pages/TVDetailsPage/TVDetailsPage'
+import SignUpPage from '../pages/SignUpPage/SignUpPage'
 
 
 function AppRoutes() {
@@ -13,6 +14,8 @@ function AppRoutes() {
     return (
         <Routes>
             <Route path="/" element={<HomePage />} />
+
+            <Route path="/signup" element={<SignUpPage />} />
 
             <Route path="/movies" element={<MoviesHomePage />} />
             <Route path="/movies/mostPopular" element={<PopularMoviesPage />} />
