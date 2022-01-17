@@ -2,10 +2,30 @@ import './PopularMoviesPage.css'
 import PopularMovies from "../../components/PopularMovies/PopularMovies"
 import { Container } from "react-bootstrap"
 import HorizontalScroll from 'react-scroll-horizontal'
+import { useState, useEffect } from 'react'
 import PopularMoviesHor from '../../components/PopularMoviesHor/PopularMoviesHor'
+import { mostPopular } from '../../services/movies.service'
+import MovieCard from '../../components/MovieCard/MovieCard'
+import Spinner from '../../components/Spinner/Spinner'
+
+
 
 function PopularMoviesPage(props) {
 
+    const [popularMovies, setPopularMovies] = useState([])
+    const [isLoading, setIsLoading] = useState(true)
+
+    useEffect(() => {
+
+        mostPopular()
+            .then(response => { 
+                setPopularMovies(response.data)
+                setIsLoading(false)
+            })
+            .catch(error => console.log(error))
+      
+
+    }, [])
    
 
     return (
@@ -18,47 +38,10 @@ function PopularMoviesPage(props) {
             </div>
 
             <div className="HorizontalScrollContainer">
+                {isLoading === true ? <Spinner /> :
                 <HorizontalScroll >              
-                    <div className='HorizontalMain HorizontalBG1'>
-                        <h1>Guillem</h1>
-                    </div>
-
-                    <div className='HorizontalMain HorizontalBG2'>
-                        <h1>Anna</h1>
-                    </div>
-
-                    <div className='HorizontalMain HorizontalBG3'>
-                        <h1>Bernat</h1>
-                    </div>
-
-                    <div className='HorizontalMain HorizontalBG4'>
-                        <h1>Riu</h1>
-                    </div>
-                </HorizontalScroll>
-            </div>
-
-            <div className="HorizontalScrollContainer">
-                <HorizontalScroll >
-                    <div className="HorizontalMain">
-                        <PopularMoviesHor />
-                    </div>
-                    
-                    <div className='HorizontalMain HorizontalBG1'>
-                        <h1>Hola Guillem</h1>
-                    </div>
-
-                    <div className='HorizontalMain HorizontalBG2'>
-                        <h1>Hola Anna</h1>
-                    </div>
-
-                    <div className='HorizontalMain HorizontalBG3'>
-                        <h1>Hola Bernat</h1>
-                    </div>
-
-                    <div className='HorizontalMain HorizontalBG4'>
-                        <h1>Hola Bebé</h1>
-                    </div>
-                </HorizontalScroll>
+                    {popularMovies.map((movie) => <MovieCard {...movie} key={movie.id} />)}
+                </HorizontalScroll>}
             </div>
 
 

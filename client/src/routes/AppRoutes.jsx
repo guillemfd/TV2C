@@ -29,8 +29,6 @@ function AppRoutes() {
             <Route path="/tv/mostPopular" element={<PopularTVPage />} />
             <Route path="/getOneTV/:TMDB_id" element={<TVDetailsPage />} />
 
-
-
             <Route path="/*" element={<h1>Page not found</h1>} />
         </Routes>
     )

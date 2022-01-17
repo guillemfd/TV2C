@@ -13,7 +13,7 @@ function NavBar() {
     return (
         <Navbar bg="dark" expand="lg" variant="dark">
             <Container>
-                <NavLink to="/" className="navbar-brand">TV2C</NavLink>
+                <Link to="/" className="navbar-brand">TV2C</Link>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav" className="justify-content-end">
 
@@ -28,22 +28,70 @@ function NavBar() {
                 </Form>
 
                 <Nav>
-                    <NavLink to="/" className="nav-link">Home</NavLink>
-
-                    <Link to="/movies/mostPopular" className="nav-link">Movies Trendings</Link>
-
-                    <NavDropdown title="Sort By..." id="basic-nav-dropdown">
+                    <NavDropdown title="Movies By..." id="basic-nav-dropdown">
                         <NavDropdown.Item >
-                            <Link to="/mostPopular" className='dropdown-item'>Most Popular</Link>
+                            <Link to="/movies/mostPopular" className='dropdown-item'>Most Popular</Link>
                         </NavDropdown.Item>
                         <NavDropdown.Item >
-                            <Link to="/mostPopular" className='dropdown-item'>Best Rated</Link>
-                        </NavDropdown.Item>    
-                        <NavDropdown.Item >
                             <Link to="/mostPopular" className='dropdown-item'>Latest Blockbusters</Link>
+                        </NavDropdown.Item>
+                        <NavDropdown.Item >
+                            <Link to="/mostPopular" className='dropdown-item'>Shorter than 90'</Link>
+                        </NavDropdown.Item>    
+                                <NavDropdown.Divider />
+                        <NavDropdown.Item >
+                            <span className='dropdown-item' style={{textAlign: 'left', fontWeight: 'bold'}}>Best by...</span>
+                        </NavDropdown.Item>
+                        <NavDropdown.Item >
+                            <Link to="/mostPopular" className='dropdown-item'>Viewers Rate</Link>
+                        </NavDropdown.Item>
+                        <NavDropdown.Item >
+                            <Link to="/mostPopular" className='dropdown-item'>All Time</Link>
+                        </NavDropdown.Item>
+                        <NavDropdown.Item >
+                            <Link to="/mostPopular" className='dropdown-item'>2010-2020</Link>
                         </NavDropdown.Item> 
+                        <NavDropdown.Item >
+                            <Link to="/mostPopular" className='dropdown-item'>2000-2010</Link>
+                        </NavDropdown.Item>
+                        <NavDropdown.Item >
+                            <Link to="/mostPopular" className='dropdown-item'>XX Century</Link>
+                        </NavDropdown.Item>
+                                <NavDropdown.Divider />
                     </NavDropdown>
 
+
+                    <NavDropdown title="TV Series By..." id="basic-nav-dropdown">
+                        <NavDropdown.Item >
+                            <Link to="/tv/mostPopular" className='dropdown-item'>Most Popular</Link>
+                        </NavDropdown.Item>
+                        <NavDropdown.Item >
+                            <Link to="/mostPopular" className='dropdown-item'>Latest Blockbusters</Link>
+                        </NavDropdown.Item>
+                        <NavDropdown.Item >
+                            <Link to="/mostPopular" className='dropdown-item'>Shorter than 20'</Link>
+                        </NavDropdown.Item>    
+                                <NavDropdown.Divider />
+                        <NavDropdown.Item >
+                            <span className='dropdown-item' style={{textAlign: 'left', fontWeight: 'bold'}}>Best by...</span>
+                        </NavDropdown.Item>
+                        <NavDropdown.Item >
+                            <Link to="/mostPopular" className='dropdown-item'>Viewers Rate</Link>
+                        </NavDropdown.Item>
+                        <NavDropdown.Item >
+                            <Link to="/mostPopular" className='dropdown-item'>All Time</Link>
+                        </NavDropdown.Item>
+                        <NavDropdown.Item >
+                            <Link to="/mostPopular" className='dropdown-item'>2010-2020</Link>
+                        </NavDropdown.Item> 
+                        <NavDropdown.Item >
+                            <Link to="/mostPopular" className='dropdown-item'>2000-2010</Link>
+                        </NavDropdown.Item>
+                        <NavDropdown.Item >
+                            <Link to="/mostPopular" className='dropdown-item'>XX Century</Link>
+                        </NavDropdown.Item>
+                                <NavDropdown.Divider />
+                    </NavDropdown>
 
 
 
@@ -89,7 +137,7 @@ function NavBar() {
 
                             <NavDropdown title="My Profile" id="basic-nav-dropdown">
                                 <NavDropdown.Item >
-                                    <span className='dropdown-item' style={{textAlign: 'left', fontWeight: 'bold'}}>{user?.username}</span>
+                                    <span className='dropdown-item' style={{textAlign: 'left', fontWeight: 'bold'}}>{user?.username}{user?.email}</span>
                                 </NavDropdown.Item>
                                 <NavDropdown.Item >
                                     <Link to="/myprofile" className='dropdown-item'>My Profile</Link>

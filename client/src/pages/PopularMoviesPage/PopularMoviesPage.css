@@ -3,9 +3,13 @@ body {
 }
 
 .HorizontalScrollContainer {
-    width: 1200px;
+    width: 100%;
     height: 300px;
     margin: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 40px;
 }
 
 .HorizontalMain {
