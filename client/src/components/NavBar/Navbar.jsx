@@ -30,7 +30,7 @@ function NavBar() {
                 <Nav>
                     <NavLink to="/" className="nav-link">Home</NavLink>
 
-                    <Link to="/mostPopular" className="nav-link">Recomendations</Link>
+                    <Link to="/movies/mostPopular" className="nav-link">Movies Trendings</Link>
 
                     <NavDropdown title="Sort By..." id="basic-nav-dropdown">
                         <NavDropdown.Item >
@@ -80,7 +80,7 @@ function NavBar() {
                                     <span className='dropdown-item' style={{textAlign: 'left', fontWeight: 'bold'}}>TV Series</span>
                                 </NavDropdown.Item>
                                 <NavDropdown.Item >
-                                    <Link to="/mostPopular" className='dropdown-item'>Wish List</Link>
+                                    <Link to="/movies/mostPopular" className='dropdown-item'>Wish List</Link>
                                 </NavDropdown.Item>
                                 <NavDropdown.Item >
                                     <Link to="/mostPopular" className='dropdown-item'>Already Seen</Link>
