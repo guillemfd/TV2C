@@ -1,6 +1,6 @@
 import './NavBar.css'
-import { Navbar, Nav, Container, NavDropdown, Form, FormControl, Button} from 'react-bootstrap'
-import { Link, NavLink } from 'react-router-dom'
+import { Navbar, Nav, Container, NavLink, NavDropdown, Form, FormControl, Button} from 'react-bootstrap'
+import { Link } from 'react-router-dom'
 import { useContext } from 'react'
 import { AuthContext } from '../../context/auth.context'
 
@@ -8,7 +8,7 @@ import { AuthContext } from '../../context/auth.context'
 
 function NavBar() {
 
-    const { isLoggedIn, user } = useContext(AuthContext)
+    const { isLoggedIn, user, logOutUser } = useContext(AuthContext)
 
     return (
         <Navbar bg="dark" expand="lg" variant="dark">
@@ -99,7 +99,7 @@ function NavBar() {
                                 </NavDropdown.Item>
                             </NavDropdown>
 
-                            <Link to="/logout" className="nav-link">Log Out</Link>
+                            <NavLink as="span" onClick={logOutUser} className="nav-link">Log Out</NavLink>
                         </>
                         :
                         <>
