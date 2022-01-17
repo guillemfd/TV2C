@@ -27,7 +27,7 @@ function SignUpForm(redirectAfterSignUp) {
         e.preventDefault()
         const credentials = { username, password, email }
         signup(credentials)
-        .then(() => navigate('/'))
+        .then(() => navigate('/login'))
         .catch(err => console.log(err))
     }
 

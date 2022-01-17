@@ -11,3 +11,7 @@ export function signup(credentials) {
 export function login(credentials) {
     return authService.post('/login', credentials)
 }
+
+export function verify(token) {
+    return authService.get('/verify', { headers: { Authorization: `Bearer ${token}`} })
+}

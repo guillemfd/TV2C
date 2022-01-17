@@ -8,7 +8,7 @@ function SignUpPage(props) {
 
     const navigate = useNavigate()
 
-    const redirectAfterSignUp = () => { navigate('/')}
+    const redirectAfterSignUp = () => { navigate('/login')}
 
     return (
 
