@@ -185,7 +185,16 @@ router.get("/tv/bestofsXXI", async (req, res, next) => {
   }
 })
 
-
+router.get("/tv/bestofsXX", async (req, res, next) => {
+  try{
+    const axiosCall = await axios(`https://api.themoviedb.org/3/discover/tv?api_key=${process.env.API_KEY}&first_air_date.lte=2000-12-31&vote_count.gte=100&without_genres=16&sort_by=vote_average.desc`)
+    const results = axiosCall.data.results
+    res.json(results);
+  }
+  catch(err){
+    console.log(err)
+  }
+})
 
 
 module.exports = router

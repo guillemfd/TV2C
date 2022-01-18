@@ -27,3 +27,7 @@ export function getTVBestOfTwentyOne() {
 export function getTVBestOfsXXI() {
     return TVService.get('/tv/bestofsXXI')
 }
+
+export function getTVBestOfsXX() {
+    return TVService.get('/tv/bestofsXX')
+}
