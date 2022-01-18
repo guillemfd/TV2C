@@ -14,6 +14,7 @@ import MoviesBestPage from '../pages/Movies/MoviesBestPage/MoviesBestPage'
 import MoviesBest2021Page from '../pages/Movies/MoviesBest2021Page/MoviesBest2021Page'
 import MoviesBestsXXIPage from '../pages/Movies/MoviesBestsXXIPage/MoviesBestsXXIPage'
 import MoviesBestsXXPage from '../pages/Movies/MoviesBestsXXPage/MoviesBestsXXPage'
+import MoviesInCinemasPage from '../pages/Movies/MoviesInCinemasPage/MoviesInCinemasPage'
 
 
 
@@ -36,7 +37,7 @@ function AppRoutes() {
             <Route path="/movies/bestof2021" element={<MoviesBest2021Page />} />
             <Route path="/movies/bestofsXXI" element={<MoviesBestsXXIPage />} />
             <Route path="/movies/bestofsXX" element={<MoviesBestsXXPage />} />
-            {/* <Route path="/movies/nowincinemas" element={<MoviesInCinemasPage />} /> */}
+            <Route path="/movies/nowincinemas" element={<MoviesInCinemasPage />} />
 
 
 

@@ -5,6 +5,7 @@ import MoviesBestHor from "../../../components/Movies/MoviesBestHor/MoviesBestHo
 import MoviesBestsXXHor from "../../../components/Movies/MoviesBestsXXHor/MoviesBestsXXHor"
 import MoviesBestsXXIHor from "../../../components/Movies/MoviesBestsXXIHor/MoviesBestsXXIHor"
 import MovieShorterThan90Hor from "../../../components/Movies/MovieShorterThan90Hor/MovieShorterThan90Hor"
+import MoviesInCinemaHor from "../../../components/Movies/MoviesInCinemaHor/MoviesInCinemaHor"
 import PopularMoviesHor from "../../../components/Movies/PopularMoviesHor/PopularMoviesHor"
 
 
@@ -46,7 +47,11 @@ function MoviesHomePage() {
             </Link>
             <MoviesBestsXXHor/>
             
-
+            <Link to="/movies/nowincinemas">
+                <Button variant="dark" size="xl">Now in cinemas</Button>
+            </Link>
+            <MoviesInCinemaHor/>
+            
         </Container>
     )
 }
