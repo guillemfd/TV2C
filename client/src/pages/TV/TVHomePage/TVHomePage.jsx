@@ -1,6 +1,7 @@
 import { Container, Button } from "react-bootstrap"
 import { Link } from 'react-router-dom'
 import PopularTVHor from "../../../components/TV/PopularTVHor/PopularTVHor"
+import TVBestHor from "../../../components/TV/TVBestHor/TVBestHor"
 import TVShorterThan25Hor from "../../../components/TV/TVShorterThan25Hor/TVShorterThan25Hor"
 
 
@@ -17,14 +18,19 @@ function TVHomePage() {
             </Link>
             <PopularTVHor />
 
-            <Link to="/tv/mostPopular">
+            <Link to="/tv/shorterthan25">
                 <Button variant="dark" size="xl">Shorter than 25 minutes</Button>
             </Link>
             <TVShorterThan25Hor />
 
+            <Link to="/tv/bestofalltime">
+                <Button variant="dark" size="xl">Best of all time</Button>
+            </Link>
+            <TVBestHor />
 
 
-        
+
+            
         
         </Container>
     )

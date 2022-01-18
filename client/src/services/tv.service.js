@@ -15,3 +15,7 @@ export function getOneTV(TMDB_id) {
 export function getTVShorterThanTwenty() {
     return TVService.get('/tv/shorterthan25')
 }
+
+export function getTVBestOfAllTime() {
+    return TVService.get('/tv/bestofalltime')
+}

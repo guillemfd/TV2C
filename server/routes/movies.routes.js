@@ -151,7 +151,16 @@ router.get("/tv/shorterthan25", async (req, res, next) => {
   }
 })
 
-
+router.get("/tv/bestofalltime", async (req, res, next) => {
+  try{
+    const axiosCall = await axios(`https://api.themoviedb.org/3/discover/tv?api_key=${process.env.API_KEY}&language=en-US&vote_count.gte=1000&without_genres=16&sort_by=vote_average.desc`)
+    const results = axiosCall.data.results
+    res.json(results);
+  }
+  catch(err){
+    console.log(err)
+  }
+})
 
 
 
