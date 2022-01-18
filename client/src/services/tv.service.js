@@ -4,7 +4,7 @@ const TVService = axios.create({
     baseURL: `${process.env.REACT_APP_SERVER_URL}/movies`
 })
 
-export function mostPopularTV() {
+export function getPopularTV() {
     return TVService.get('/tv/mostPopular')
 }
 

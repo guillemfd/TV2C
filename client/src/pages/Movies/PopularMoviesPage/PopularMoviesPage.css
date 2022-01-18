@@ -12,6 +12,18 @@ body {
     margin: 0 40px;
 }
 
+.cards_at_PopularMovies{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    flex-wrap: wrap;
+}
+
 .HorizontalMain {
     width: 600px;
     height: 100vh;
@@ -19,7 +31,6 @@ body {
     justify-content: center;
     align-items: center;
 }
-
 
 .HorizontalBG1 {
     background-color: royalblue;

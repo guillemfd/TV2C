@@ -1,6 +1,6 @@
 import { Container, Button } from "react-bootstrap"
 import { Link } from 'react-router-dom'
-import PopularMoviesHor from "../../../components/PopularMoviesHor/PopularMoviesHor"
+import PopularMoviesHor from "../../../components/Movies/PopularMoviesHor/PopularMoviesHor"
 
 
 function MoviesHomePage() {

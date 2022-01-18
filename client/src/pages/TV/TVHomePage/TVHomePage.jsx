@@ -1,5 +1,6 @@
 import { Container, Button } from "react-bootstrap"
 import { Link } from 'react-router-dom'
+import PopularTVHor from "../../../components/PopularTVHor/PopularTVHor"
 
 
 function TVHomePage() {
@@ -12,6 +13,8 @@ function TVHomePage() {
                 <Button variant="dark" size="xl">Most Popular</Button>
             </Link>
 
+        <PopularTVHor />
+        
         </Container>
     )
 }

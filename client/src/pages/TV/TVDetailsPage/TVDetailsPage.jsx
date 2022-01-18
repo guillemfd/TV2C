@@ -1,8 +1,8 @@
 // import './MovieDetailsPage.css'
 import { useEffect, useState } from "react"
 import { useParams, Link } from "react-router-dom"
-import { getOneTV } from "../../services/tv.service"
-import Spinner from "../../components/Spinner/Spinner"
+import { getOneTV } from "../../../services/tv.service"
+import Spinner from "../../../components/Spinner/Spinner"
 import {Carousel} from 'react-bootstrap'
 
 

@@ -4,10 +4,14 @@ const moviesService = axios.create({
     baseURL: `${process.env.REACT_APP_SERVER_URL}/movies`
 })
 
-export function mostPopular() {
+export function getPopularMovies() {
     return moviesService.get('/mostPopular')
 }
 
 export function getOneMovie(TMDB_id) {
     return moviesService.get(`/getOneMovie/${TMDB_id}`)
+}
+
+export function shorterThan90() {
+    return moviesService.get('/shorterthan90')
 }
