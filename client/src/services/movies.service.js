@@ -19,3 +19,19 @@ export function getShorterThan() {
 export function getBestOfAllTime() {
     return moviesService.get('/bestofalltime')
 }
+
+export function getBestOfTwentyOne() {
+    return moviesService.get('/bestof2021')
+}
+
+export function getBestOfsXXI() {
+    return moviesService.get('/bestofsXXI')
+}
+
+export function getBestOfsXX() {
+    return moviesService.get('/bestofsXX')
+}
+
+export function getNowInCinemas() {
+    return moviesService.get('/nowincinemas')
+}

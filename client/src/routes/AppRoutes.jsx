@@ -11,6 +11,9 @@ import LogInPage from '../pages/LogInPage/LogInPage'
 import ProfileDetailsPage from '../pages/ProfileDetailsPage/ProfileDetailsPage'
 import MovieShorterThan90Page from '../pages/Movies/MovieShorterThan90Page/MovieShorterThan90Page'
 import MoviesBestPage from '../pages/Movies/MoviesBestPage/MoviesBestPage'
+import MoviesBest2021Page from '../pages/Movies/MoviesBest2021Page/MoviesBest2021Page'
+import MoviesBestsXXIPage from '../pages/Movies/MoviesBestsXXIPage/MoviesBestsXXIPage'
+import MoviesBestsXXPage from '../pages/Movies/MoviesBestsXXPage/MoviesBestsXXPage'
 
 
 
@@ -30,6 +33,12 @@ function AppRoutes() {
             <Route path="/movies/getOneMovie/:TMDB_id" element={<MovieDetailsPage />} />
             <Route path="/movies/shorterthan90" element={<MovieShorterThan90Page />} />
             <Route path="/movies/bestofalltime" element={<MoviesBestPage />} />
+            <Route path="/movies/bestof2021" element={<MoviesBest2021Page />} />
+            <Route path="/movies/bestofsXXI" element={<MoviesBestsXXIPage />} />
+            <Route path="/movies/bestofsXX" element={<MoviesBestsXXPage />} />
+            {/* <Route path="/movies/nowincinemas" element={<MoviesInCinemasPage />} /> */}
+
+
 
 
             <Route path="/tv" element={<TVHomePage />} />

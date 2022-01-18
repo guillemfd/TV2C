@@ -1,6 +1,9 @@
 import { Container, Button } from "react-bootstrap"
 import { Link } from 'react-router-dom'
+import MoviesBest2021Hor from "../../../components/Movies/MoviesBest2021Hor/MoviesBest2021Hor"
 import MoviesBestHor from "../../../components/Movies/MoviesBestHor/MoviesBestHor"
+import MoviesBestsXXHor from "../../../components/Movies/MoviesBestsXXHor/MoviesBestsXXHor"
+import MoviesBestsXXIHor from "../../../components/Movies/MoviesBestsXXIHor/MoviesBestsXXIHor"
 import MovieShorterThan90Hor from "../../../components/Movies/MovieShorterThan90Hor/MovieShorterThan90Hor"
 import PopularMoviesHor from "../../../components/Movies/PopularMoviesHor/PopularMoviesHor"
 
@@ -27,6 +30,22 @@ function MoviesHomePage() {
                 <Button variant="dark" size="xl">Best of All Time</Button>
             </Link>
             <MoviesBestHor/>
+
+            <Link to="/movies/bestof2021">
+                <Button variant="dark" size="xl">Best of 2021</Button>
+            </Link>
+            <MoviesBest2021Hor/>
+
+            <Link to="/movies/bestofsXXI">
+                <Button variant="dark" size="xl">Best of sXXI</Button>
+            </Link>
+            <MoviesBestsXXIHor/>
+
+            <Link to="/movies/bestofsXX">
+                <Button variant="dark" size="xl">Best of sXX</Button>
+            </Link>
+            <MoviesBestsXXHor/>
+            
 
         </Container>
     )
