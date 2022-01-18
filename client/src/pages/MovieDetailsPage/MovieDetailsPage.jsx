@@ -73,7 +73,7 @@ function MovieDetailsPage(props) {
                     <p className="description">{oneMovie.overview}</p>
                     <p className="description">Duration: {convertRuntime(oneMovie.runtime)} ({oneMovie.runtime}m.)</p>
                     <p className="description" style={{marginTop: '-15px'}}>It was released on {oneMovie.release_date}, with a budget of {oneMovie.budget} $.</p>
-                    <p className="description">Average: {oneMovie.vote_average}</p>
+                    <p className="description">Rating: {oneMovie.vote_average}/10 ({oneMovie.vote_count} votes)</p>
                     <p className="description">
                         <img className="company-logo" src={IMG_API + oneMovie.production_companies[0].logo_path} alt={oneMovie.title}/>
                     </p>

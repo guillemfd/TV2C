@@ -24,28 +24,20 @@ function TVDetailsPage(props) {
             .catch(err => console.log(err))
     }, [])
 
-    // const convertRuntime = (num) => {
-    //     let hours = num / 60;
-    //     let rhours = Math.floor(hours);
-    //     let minutes = (hours - rhours) * 60;
-    //     let rminutes = Math.round(minutes);
-    //     return rhours + "h " + rminutes + "m";
-    //   };
 
     return (
 
             isLoading === true ? <Spinner /> :
         <>
-            <h1>Soy TVDetailsPage</h1>
 
-            {/* <section className="details_container">
+            <section className="details_container">
                 <div className="img_section">
 
                 <Carousel variant="dark">
                     <Carousel.Item>
                         <img
                         className="detail-movie-cover"
-                        src={IMG_API + oneMovie.poster_path}
+                        src={IMG_API + oneTV.poster_path}
                         alt="First slide"
                         />
                         <Carousel.Caption>
@@ -55,78 +47,77 @@ function TVDetailsPage(props) {
                     <Carousel.Item>
                         <img
                         className="detail-movie-cover"
-                        src={IMG_API + oneMovie.backdrop_path}
+                        src={IMG_API + oneTV.backdrop_path}
                         alt="Second slide"
                         />
                         <Carousel.Caption>
                         <h5>Backdrop Poster</h5>
                         </Carousel.Caption>
                     </Carousel.Item>
-                </Carousel> */}
+                </Carousel>
 
                     {/* <img className="detail-movie-cover" src={IMG_API + oneMovie.poster_path} alt={oneMovie.title}/> */}
                     {/* <img className="detail-movie-cover" src={IMG_API + oneMovie.backdrop_path} alt={oneMovie.title}/> */}
-                {/* </div>
+                </div>
 
                 <div className="profile_desc_section">
-                    <h2 style={{fontWeight: '700'}}>{oneMovie.title}</h2>
-                    <h4 style={{color: 'white', fontWeight: '200', marginBottom: '25px'}}>{oneMovie.tagline}</h4>
-                    <p className="description">{oneMovie.overview}</p>
-                    <p className="description">Duration: {convertRuntime(oneMovie.runtime)} ({oneMovie.runtime}m.)</p>
-                    <p className="description" style={{marginTop: '-15px'}}>It was released on {oneMovie.release_date}, with a budget of {oneMovie.budget} $.</p>
-                    <p className="description">Average: {oneMovie.vote_average}</p>
+                    <h2 style={{fontWeight: '700'}}>{oneTV.name}</h2>
+                    <h4 style={{color: 'white', fontWeight: '200', marginBottom: '25px'}}>{oneTV.tagline}</h4>
+                    <p className="description">Created by: {oneTV.created_by[0].name}</p>
+                    <p className="description">{oneTV.overview}</p>
+                    <p className="description">It has a total of {oneTV.number_of_seasons} seasons, with {oneTV.number_of_episodes} episodes for each season, and a duration of {oneTV.episode_run_time.slice(0, 1)} minutes each episode.</p>
+                    <p className="description" style={{marginTop: '-15px'}}>The first episode was released on {oneTV.first_air_date}, and the last one on {oneTV.last_episode_to_air.air_date}. You can watch it at {oneTV.networks[0].name}.</p>
+                    <p className="description">Rating: {oneTV.vote_average}/10 ({oneTV.vote_count} votes)</p>
                     <p className="description">
-                        <img className="company-logo" src={IMG_API + oneMovie.production_companies[0].logo_path} alt={oneMovie.title}/>
+                        <img className="company-logo" src={IMG_API + oneTV.production_companies[0].logo_path} alt={oneTV.title}/>
                     </p>
 
-                    <Link to={`/mostPopular`}>
+                    <Link to={`/tv/mostPopular`}>
                             <button className="card-button">Add to My List</button>
                     </Link>
-                    <Link to={`/mostPopular`}>
+                    <Link to={`/tv/mostPopular`}>
                             <button className="card-button">Already seen!</button>
                     </Link>
-
                     
-                    <a className="description" href={oneMovie.homepage} target="_blank" rel="noreferrer noopener">Movie Homepage</a>
+                    <a className="description" href={oneTV.homepage} target="_blank" rel="noreferrer noopener">TV Serie Homepage</a>
 
                     <div className='cast-container'>
                         <p className='cast-text'>Most relevant actors:</p>
                         <div className='cast-wrapper'>
                             <div className="cast-card">
-                                <img className="cast-pic" src={IMG_API + oneMovie.credits.cast[0].profile_path} alt={oneMovie.credits.cast[0].name}/>
-                                <p className="cast-name">{oneMovie.credits.cast[0].name}</p>
+                                <img className="cast-pic" src={IMG_API + oneTV.credits.cast[0].profile_path} alt={oneTV.credits.cast[0].name}/>
+                                <p className="cast-name">{oneTV.credits.cast[0].name}</p>
                             </div>
                             <div className="cast-card">
-                                <img className="cast-pic" src={IMG_API + oneMovie.credits.cast[1].profile_path} alt={oneMovie.credits.cast[0].name}/>
-                                <p className="cast-name">{oneMovie.credits.cast[1].name}</p>
+                                <img className="cast-pic" src={IMG_API + oneTV.credits.cast[1].profile_path} alt={oneTV.credits.cast[0].name}/>
+                                <p className="cast-name">{oneTV.credits.cast[1].name}</p>
                             </div>
                             <div className="cast-card">
-                                <img className="cast-pic" src={IMG_API + oneMovie.credits.cast[2].profile_path} alt={oneMovie.credits.cast[0].name}/>
-                                <p className="cast-name">{oneMovie.credits.cast[2].name}</p>
+                                <img className="cast-pic" src={IMG_API + oneTV.credits.cast[2].profile_path} alt={oneTV.credits.cast[0].name}/>
+                                <p className="cast-name">{oneTV.credits.cast[2].name}</p>
                             </div>
                             <div className="cast-card">
-                                <img className="cast-pic" src={IMG_API + oneMovie.credits.cast[3].profile_path} alt={oneMovie.credits.cast[0].name}/>
-                                <p className="cast-name">{oneMovie.credits.cast[3].name}</p>
+                                <img className="cast-pic" src={IMG_API + oneTV.credits.cast[3].profile_path} alt={oneTV.credits.cast[0].name}/>
+                                <p className="cast-name">{oneTV.credits.cast[3].name}</p>
                             </div>
                             <div className="cast-card">
-                                <img className="cast-pic" src={IMG_API + oneMovie.credits.cast[4].profile_path} alt={oneMovie.credits.cast[0].name}/>
-                                <p className="cast-name">{oneMovie.credits.cast[4].name}</p>
+                                <img className="cast-pic" src={IMG_API + oneTV.credits.cast[4].profile_path} alt={oneTV.credits.cast[0].name}/>
+                                <p className="cast-name">{oneTV.credits.cast[4].name}</p>
                             </div>
                             <div className="cast-card">
-                                <img className="cast-pic" src={IMG_API + oneMovie.credits.cast[5].profile_path} alt={oneMovie.credits.cast[0].name}/>
-                                <p className="cast-name">{oneMovie.credits.cast[5].name}</p>
+                                <img className="cast-pic" src={IMG_API + oneTV.credits.cast[5].profile_path} alt={oneTV.credits.cast[0].name}/>
+                                <p className="cast-name">{oneTV.credits.cast[5].name}</p>
                             </div>
+
                         </div>
                     </div>
 
                     <div className="interests">
-                        <span className="interests_item">{oneMovie.genres[0].name}</span>
-                        <span className="interests_item">{oneMovie.genres[1].name}</span>
-                        <span className="interests_item">{oneMovie.genres[2].name}</span> */}
+                        <span className="interests_item">{oneTV.genres[0].name}</span>
                         {/* <span className="interests_item">{{oneMovie.genres[3].name} ? {oneMovie.genres[3].name} : ""}</span> */}
-                    {/* </div>
+                    </div>
                 </div>
-            </section> */}
+            </section>
 
         </>
 
