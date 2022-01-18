@@ -42,7 +42,6 @@ router.get("/getOneMovie/:TMDB_id", async (req, res, next) => {
 })
 
 
-//això va a http://localhost:5005/api/movies/mostPopular
 router.get("/shorterthan90", async (req, res, next) => {
   try{
     const axiosCall = await axios(`https://api.themoviedb.org/3/discover/movie?api_key=${process.env.API_KEY}&language=en-US&sort_by=vote_average.desc&include_adult=false&page=1&vote_count.gte=50&vote_average.gte=8&with_runtime.lte=90&with_watch_monetization_types=flatrate`)
@@ -55,7 +54,16 @@ router.get("/shorterthan90", async (req, res, next) => {
 })
 
 
-
+router.get("/bestofalltime", async (req, res, next) => {
+  try{
+    const axiosCall = await axios(`https://api.themoviedb.org/3/discover/movie?api_key=${process.env.API_KEY}&language=en-US&sort_by=vote_average.desc&include_adult=false&page=1&vote_count.gte=50&with_watch_monetization_types=flatrate`)
+    const results = axiosCall.data.results
+    res.json(results);
+  }
+  catch(err){
+    console.log(err)
+  }
+})
 
 
 

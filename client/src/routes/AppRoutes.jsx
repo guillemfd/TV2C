@@ -10,6 +10,7 @@ import SignUpPage from '../pages/SignUpPage/SignUpPage'
 import LogInPage from '../pages/LogInPage/LogInPage'
 import ProfileDetailsPage from '../pages/ProfileDetailsPage/ProfileDetailsPage'
 import MovieShorterThan90Page from '../pages/Movies/MovieShorterThan90Page/MovieShorterThan90Page'
+import MoviesBestPage from '../pages/Movies/MoviesBestPage/MoviesBestPage'
 
 
 
@@ -24,11 +25,11 @@ function AppRoutes() {
             <Route path="/myprofile/:userId" element={<ProfileDetailsPage />} />
 
 
-
             <Route path="/movies" element={<MoviesHomePage />} />
             <Route path="/movies/mostPopular" element={<PopularMoviesPage />} />
             <Route path="/movies/getOneMovie/:TMDB_id" element={<MovieDetailsPage />} />
             <Route path="/movies/shorterthan90" element={<MovieShorterThan90Page />} />
+            <Route path="/movies/bestofalltime" element={<MoviesBestPage />} />
 
 
             <Route path="/tv" element={<TVHomePage />} />

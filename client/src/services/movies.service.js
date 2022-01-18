@@ -15,3 +15,7 @@ export function getOneMovie(TMDB_id) {
 export function getShorterThan() {
     return moviesService.get('/shorterthan90')
 }
+
+export function getBestOfAllTime() {
+    return moviesService.get('/bestofalltime')
+}
