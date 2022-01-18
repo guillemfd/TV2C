@@ -18,6 +18,7 @@ import MoviesInCinemasPage from '../pages/Movies/MoviesInCinemasPage/MoviesInCin
 import TVShorterThan25Page from '../pages/TV/TVShorterThan25Page/TVShorterThan25Page'
 import TVBestPage from '../pages/TV/TVBestPage/TVBestPage'
 import TVBest2021Page from '../pages/TV/TVBest2021Page/TVBest2021Page'
+import TVBestsXXIPage from '../pages/TV/TVBestsXXIPage/TVBestsXXIPage'
 
 
 
@@ -51,6 +52,7 @@ function AppRoutes() {
             <Route path="/tv/shorterthan25" element={<TVShorterThan25Page />} />
             <Route path="/tv/bestofalltime" element={<TVBestPage />} />
             <Route path="/tv/bestof2021" element={<TVBest2021Page />} />
+            <Route path="/tv/bestofsXXI" element={<TVBestsXXIPage />} />
 
 
 

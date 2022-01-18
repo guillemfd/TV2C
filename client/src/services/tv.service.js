@@ -23,3 +23,7 @@ export function getTVBestOfAllTime() {
 export function getTVBestOfTwentyOne() {
     return TVService.get('/tv/bestof2021')
 }
+
+export function getTVBestOfsXXI() {
+    return TVService.get('/tv/bestofsXXI')
+}

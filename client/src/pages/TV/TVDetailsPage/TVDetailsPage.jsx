@@ -56,8 +56,7 @@ function TVDetailsPage(props) {
                     </Carousel.Item>
                 </Carousel>
 
-                    {/* <img className="detail-movie-cover" src={IMG_API + oneMovie.poster_path} alt={oneMovie.title}/> */}
-                    {/* <img className="detail-movie-cover" src={IMG_API + oneMovie.backdrop_path} alt={oneMovie.title}/> */}
+
                 </div>
 
                 <div className="profile_desc_section">
@@ -69,7 +68,7 @@ function TVDetailsPage(props) {
                     <p className="description" style={{marginTop: '-15px'}}>The first episode was released on {oneTV.first_air_date}, and the last one on {oneTV.last_episode_to_air.air_date}. You can watch it at {oneTV.networks[0].name}.</p>
                     <p className="description">Rating: {oneTV.vote_average}/10 ({oneTV.vote_count} votes)</p>
                     <p className="description">
-                        <img className="company-logo" src={IMG_API + oneTV.production_companies[0].logo_path} alt={oneTV.title}/>
+                        {/* <img className="company-logo" src={IMG_API + oneTV.production_companies[0].logo_path} alt={oneTV.title}/> */}
                     </p>
 
                     <Link to={`/tv/mostPopular`}>
