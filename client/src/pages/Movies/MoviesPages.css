@@ -1,0 +1,33 @@
+body {
+    background-color: rgb(78, 144, 153);
+}
+
+.HorizontalScrollContainer {
+    width: 100%;
+    height: 300px;
+    margin: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 40px;
+}
+
+.cards_at_Movies_Pages{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    flex-wrap: wrap;
+}
+
+.HorizontalMain {
+    width: 600px;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

@@ -1,24 +1,24 @@
+// import './PopularMoviesHor.css'
 import { useState, useEffect } from 'react'
-import { getPopularTV } from '../../../services/tv.service'
+import { getShorterThan } from '../../../services/movies.service'
 import Spinner from '../../Spinner/Spinner'
 import HorizontalScroll from 'react-scroll-horizontal'
-import TVCard from '../../TV/TVCard/TVCard'
+import MovieCard from '../MovieCard/MovieCard'
 
 
-function PopularTVHor() {
+function MovieShorterThan90Hor() {
 
-    const [popularTV, setPopularTV] = useState([])
+    const [shorterThan, setShorterThan] = useState([])
     const [isLoading, setIsLoading] = useState(true)
 
     useEffect(() => {
 
-        getPopularTV()
+        getShorterThan()
             .then(response => { 
-                setPopularTV(response.data)
+                setShorterThan(response.data)
                 setIsLoading(false)
             })
-            .catch(error => console.log(error))
-      
+            .catch(error => console.log(error))    
 
     }, [])
 
@@ -27,10 +27,10 @@ function PopularTVHor() {
         <div className="HorizontalScrollContainer">
             {isLoading === true ? <Spinner /> :
             <HorizontalScroll >              
-                {popularTV.map((tv) => <TVCard {...tv} key={tv.id} />)}
+                {shorterThan.map((movie) => <MovieCard {...movie} key={movie.id} />)}
             </HorizontalScroll>}
         </div>
     )
 }
 
-export default PopularTVHor
+export default MovieShorterThan90Hor

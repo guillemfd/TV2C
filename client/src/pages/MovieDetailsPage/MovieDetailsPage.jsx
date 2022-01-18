@@ -121,7 +121,9 @@ function MovieDetailsPage(props) {
                     <div className="interests">
                         <span className="interests_item">{oneMovie.genres[0].name}</span>
                         <span className="interests_item">{oneMovie.genres[1].name}</span>
+                        {/* {{oneMovie.genres[2].name} ?
                         <span className="interests_item">{oneMovie.genres[2].name}</span>
+                        : ""} */}
                         {/* <span className="interests_item">{{oneMovie.genres[3].name} ? {oneMovie.genres[3].name} : ""}</span> */}
                     </div>
                 </div>

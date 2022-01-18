@@ -1,6 +1,6 @@
 import { Container, Button } from "react-bootstrap"
 import { Link } from 'react-router-dom'
-import PopularTVHor from "../../../components/PopularTVHor/PopularTVHor"
+import PopularTVHor from "../../../components/TV/PopularTVHor/PopularTVHor"
 
 
 function TVHomePage() {

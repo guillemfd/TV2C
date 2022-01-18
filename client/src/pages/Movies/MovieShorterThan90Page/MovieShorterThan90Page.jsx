@@ -1,22 +1,22 @@
 import '../MoviesPages.css'
 import { Container } from "react-bootstrap"
 import { useState, useEffect } from 'react'
-import { getPopularMovies } from '../../../services/movies.service'
+import { getShorterThan } from '../../../services/movies.service'
 import MovieCard from '../../../components/Movies/MovieCard/MovieCard'
 import Spinner from '../../../components/Spinner/Spinner'
 
 
 
-function PopularMoviesPage(props) {
+function MovieShorterThan90Page(props) {
 
-    const [popularMovies, setPopularMovies] = useState([])
+    const [shorterThan, setShorterThan] = useState([])
     const [isLoading, setIsLoading] = useState(true)
 
     useEffect(() => {
 
-        getPopularMovies()
+        getShorterThan()
             .then(response => { 
-                setPopularMovies(response.data)
+                setShorterThan(response.data)
                 setIsLoading(false)
             })
             .catch(error => console.log(error))    
@@ -28,9 +28,9 @@ function PopularMoviesPage(props) {
         isLoading === true ? <Spinner /> :
         <Container >
             <div className="cards_at_Movies_Pages">
-                {popularMovies.map((movie) => <MovieCard {...movie} key={movie.id} />)}
+                {shorterThan.map((movie) => <MovieCard {...movie} key={movie.id} />)}
             </div>
         </Container>
     )
 }
-export default PopularMoviesPage
+export default MovieShorterThan90Page

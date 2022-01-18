@@ -36,7 +36,7 @@ function NavBar() {
                             <Link to="/mostPopular" className='dropdown-item'>Latest Blockbusters</Link>
                         </NavDropdown.Item>
                         <NavDropdown.Item >
-                            <Link to="/mostPopular" className='dropdown-item'>Shorter than 90'</Link>
+                            <Link to="/movies/shorterthan90" className='dropdown-item'>Shorter than 90'</Link>
                         </NavDropdown.Item>    
                                 <NavDropdown.Divider />
                         <NavDropdown.Item >

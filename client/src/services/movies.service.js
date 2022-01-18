@@ -12,6 +12,6 @@ export function getOneMovie(TMDB_id) {
     return moviesService.get(`/getOneMovie/${TMDB_id}`)
 }
 
-export function shorterThan90() {
+export function getShorterThan() {
     return moviesService.get('/shorterthan90')
 }
