@@ -17,6 +17,7 @@ import MoviesBestsXXPage from '../pages/Movies/MoviesBestsXXPage/MoviesBestsXXPa
 import MoviesInCinemasPage from '../pages/Movies/MoviesInCinemasPage/MoviesInCinemasPage'
 import TVShorterThan25Page from '../pages/TV/TVShorterThan25Page/TVShorterThan25Page'
 import TVBestPage from '../pages/TV/TVBestPage/TVBestPage'
+import TVBest2021Page from '../pages/TV/TVBest2021Page/TVBest2021Page'
 
 
 
@@ -49,6 +50,7 @@ function AppRoutes() {
             <Route path="/getOneTV/:TMDB_id" element={<TVDetailsPage />} />
             <Route path="/tv/shorterthan25" element={<TVShorterThan25Page />} />
             <Route path="/tv/bestofalltime" element={<TVBestPage />} />
+            <Route path="/tv/bestof2021" element={<TVBest2021Page />} />
 
 
 

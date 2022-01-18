@@ -63,7 +63,7 @@ function TVDetailsPage(props) {
                 <div className="profile_desc_section">
                     <h2 style={{fontWeight: '700'}}>{oneTV.name}</h2>
                     <h4 style={{color: 'white', fontWeight: '200', marginBottom: '25px'}}>{oneTV.tagline}</h4>
-                    <p className="description">Created by: {oneTV.created_by[0].name}</p>
+                    {/* <p className="description">Created by: {oneTV.created_by[0].name}/p> */}
                     <p className="description">{oneTV.overview}</p>
                     <p className="description">It has a total of {oneTV.number_of_seasons} seasons, with {oneTV.number_of_episodes} episodes for each season, and a duration of {oneTV.episode_run_time.slice(0, 1)} minutes each episode.</p>
                     <p className="description" style={{marginTop: '-15px'}}>The first episode was released on {oneTV.first_air_date}, and the last one on {oneTV.last_episode_to_air.air_date}. You can watch it at {oneTV.networks[0].name}.</p>

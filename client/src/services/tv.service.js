@@ -19,3 +19,7 @@ export function getTVShorterThanTwenty() {
 export function getTVBestOfAllTime() {
     return TVService.get('/tv/bestofalltime')
 }
+
+export function getTVBestOfTwentyOne() {
+    return TVService.get('/tv/bestof2021')
+}
