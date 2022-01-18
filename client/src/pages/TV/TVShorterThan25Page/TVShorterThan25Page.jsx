@@ -1,21 +1,21 @@
 // import './PopularMoviesPage.css'
 import { Container } from "react-bootstrap"
 import { useState, useEffect } from 'react'
-import { getPopularTV } from "../../../services/tv.service"
+import { getTVShorterThanTwenty } from "../../../services/tv.service"
 import Spinner from "../../../components/Spinner/Spinner"
 import TVCard from "../../../components/TV/TVCard/TVCard"
 
 
-function TVPopularPage(props) {
+function TVShorterThan25Page(props) {
 
-    const [popularTV, setPopularTV] = useState([])
+    const [shorterThan25TV, setShorterThan25TV] = useState([])
     const [isLoading, setIsLoading] = useState(true)
 
     useEffect(() => {
 
-        getPopularTV()
+        getTVShorterThanTwenty()
             .then(response => { 
-                setPopularTV(response.data)
+                setShorterThan25TV(response.data)
                 setIsLoading(false)
             })
             .catch(error => console.log(error))     
@@ -27,14 +27,14 @@ function TVPopularPage(props) {
         isLoading === true ? <Spinner /> :
 
         <Container>
-            <h1>20 Most Popular TV series</h1>
+            <h1>Shorter than 25 minutes TV series</h1>
             <hr/>
 
             <div className="cards_at_Movies_Pages">
-                {popularTV.map((tv) => <TVCard {...tv} key={tv.id} />)}
+                {shorterThan25TV.map((tv) => <TVCard {...tv} key={tv.id} />)}
             </div>
         </Container>
     )
 }
 
-export default TVPopularPage
+export default TVShorterThan25Page

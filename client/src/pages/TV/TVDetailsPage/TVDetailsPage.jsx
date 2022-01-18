@@ -88,7 +88,7 @@ function TVDetailsPage(props) {
                                 <img className="cast-pic" src={IMG_API + oneTV.credits.cast[0].profile_path} alt={oneTV.credits.cast[0].name}/>
                                 <p className="cast-name">{oneTV.credits.cast[0].name}</p>
                             </div>
-                            <div className="cast-card">
+                            {/* <div className="cast-card">
                                 <img className="cast-pic" src={IMG_API + oneTV.credits.cast[1].profile_path} alt={oneTV.credits.cast[0].name}/>
                                 <p className="cast-name">{oneTV.credits.cast[1].name}</p>
                             </div>
@@ -107,7 +107,7 @@ function TVDetailsPage(props) {
                             <div className="cast-card">
                                 <img className="cast-pic" src={IMG_API + oneTV.credits.cast[5].profile_path} alt={oneTV.credits.cast[0].name}/>
                                 <p className="cast-name">{oneTV.credits.cast[5].name}</p>
-                            </div>
+                            </div> */}
 
                         </div>
                     </div>

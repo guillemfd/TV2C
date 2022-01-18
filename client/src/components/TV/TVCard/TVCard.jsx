@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 
-function TVCard({poster_path, name, first_air_date, vote_average, id, runtime}) {
+function TVCard({poster_path, name, first_air_date, vote_average, id, }) {
 
 
     const IMG_API = "https://image.tmdb.org/t/p/w1280"

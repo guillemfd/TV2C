@@ -119,7 +119,7 @@ router.get("/nowincinemas", async (req, res, next) => {
 //-------------------- TV -------------------- TV -------------------- TV -------------------- TV -------------------- TV --------------
 router.get("/tv/mostPopular", async (req, res, next) => {
     try{
-      const axiosCall = await axios(`https://api.themoviedb.org/3/tv/popular?api_key=${process.env.API_KEY}`)
+      const axiosCall = await axios(`https://api.themoviedb.org/3/tv/popular?api_key=${process.env.API_KEY}&sort_by=popularity.desc`)
       const results = axiosCall.data.results
       res.json(results);
     }
@@ -139,5 +139,23 @@ router.get("/getOneTV/:TMDB_id", async (req, res, next) => {
     console.log(err)
   }
 })
+
+router.get("/tv/shorterthan25", async (req, res, next) => {
+  try{
+    const axiosCall = await axios(`https://api.themoviedb.org/3/discover/tv?api_key=${process.env.API_KEY}&language=en-US&vote_count.gte=1500&sort_by=vote_average.desc&without_genres=16&with_runtime.lte=25`)
+    const results = axiosCall.data.results
+    res.json(results);
+  }
+  catch(err){
+    console.log(err)
+  }
+})
+
+
+
+
+
+
+
 
 module.exports = router

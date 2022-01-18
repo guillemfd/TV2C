@@ -15,6 +15,7 @@ import MoviesBest2021Page from '../pages/Movies/MoviesBest2021Page/MoviesBest202
 import MoviesBestsXXIPage from '../pages/Movies/MoviesBestsXXIPage/MoviesBestsXXIPage'
 import MoviesBestsXXPage from '../pages/Movies/MoviesBestsXXPage/MoviesBestsXXPage'
 import MoviesInCinemasPage from '../pages/Movies/MoviesInCinemasPage/MoviesInCinemasPage'
+import TVShorterThan25Page from '../pages/TV/TVShorterThan25Page/TVShorterThan25Page'
 
 
 
@@ -45,6 +46,8 @@ function AppRoutes() {
             <Route path="/tv" element={<TVHomePage />} />
             <Route path="/tv/mostPopular" element={<TVPopularPage />} />
             <Route path="/getOneTV/:TMDB_id" element={<TVDetailsPage />} />
+            <Route path="/tv/shorterthan25" element={<TVShorterThan25Page />} />
+
 
             <Route path="/*" element={<h1>Page not found</h1>} />
         </Routes>
