@@ -197,4 +197,16 @@ router.get("/tv/bestofsXX", async (req, res, next) => {
 })
 
 
+//---------------- SEARCH ------------------------ SEARCH ------------------------ SEARCH ------------------------ SEARCH --------
+router.get("/:query", async (req, res, next) => {
+  try{
+    const axiosCall = await axios(`https://api.themoviedb.org/3/search/keyword?api_key=${process.env.API_KEY}&query=${req.params.query}&sort_by=vote_average.desc`)
+    const results = axiosCall.data.results
+    res.json(results);
+  }
+  catch(err){
+    console.log(err)
+  }
+})
+
 module.exports = router

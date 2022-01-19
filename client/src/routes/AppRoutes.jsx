@@ -20,6 +20,7 @@ import TVBestPage from '../pages/TV/TVBestPage/TVBestPage'
 import TVBest2021Page from '../pages/TV/TVBest2021Page/TVBest2021Page'
 import TVBestsXXIPage from '../pages/TV/TVBestsXXIPage/TVBestsXXIPage'
 import TVBestsXXPage from '../pages/TV/TVBestsXXPage/TVBestsXXPage'
+import Page404 from '../pages/404/404'
 
 
 
@@ -56,7 +57,7 @@ function AppRoutes() {
 
 
 
-            <Route path="/*" element={<h1>Page not found</h1>} />
+            <Route path="/*" element={<Page404 />} />
         </Routes>
     )
 }

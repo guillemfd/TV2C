@@ -31,3 +31,7 @@ export function getTVBestOfsXXI() {
 export function getTVBestOfsXX() {
     return TVService.get('/tv/bestofsXX')
 }
+
+export function getSearch(query) {
+    return TVService.get(`/${query}`)
+}

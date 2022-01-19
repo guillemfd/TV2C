@@ -15,9 +15,9 @@
     display: flex;
     justify-content: center;
     /* align-items: flex-end; */
-    width: 180px; 
-    height: 250px;
-    margin: 1rem;
+    width: 150px; 
+    height: 210px;
+    margin: 0.5rem;
     background-position: center;
     box-shadow: 2px 8px 6px #1b1b1b;
     overflow: hidden;
@@ -37,8 +37,8 @@
 }
 
 .movie-cover {
-    width: 180px; 
-    height: 250px;
+    width: 150px; 
+    height: 210px;
 }
 
 .card-container:hover .movie-card{
@@ -50,29 +50,28 @@
     transition: all .5s ease;
     font-weight: 700;
     color: rgb(255, 255, 255);
-    line-height: 10px; 
+    line-height: 1px; 
 }
 
 .card-desc{
-    font-size: 15px;
+    font-size: 13px;
     transition: all .5s ease;
     font-weight: 500;
     color: rgb(197, 197, 197);
     text-align: left;
     margin-left: 1rem;
     margin-top: 1rem;
-    line-height: 10px; 
+    line-height: 5px; 
 }
 
 
 .card-button{
     border-radius: 15px;
-    height: 30px;
+    height: 25px;
     width: 80%;
-    padding: 3px;
     background: #00d9ff6b;
     border: none;
     color: #fff;
-    margin-bottom: 15px;
+    margin-bottom: 12px;
     cursor: pointer;
 }

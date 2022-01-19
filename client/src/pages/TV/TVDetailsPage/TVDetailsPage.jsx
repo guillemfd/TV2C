@@ -24,12 +24,19 @@ function TVDetailsPage(props) {
             .catch(err => console.log(err))
     }, [])
 
+    // const background = {backgroundImage: `url(${IMG_API + oneTV.poster_path})`}
 
     return (
 
             isLoading === true ? <Spinner /> :
-        <>
-
+        <div style={{
+            backgroundImage: `url(${IMG_API + oneTV.poster_path})`,
+            backgroundPosition: 'center',
+            backgroundSize: 'cover',
+            backgroundRepeat: 'no-repeat',
+            marginTop: '-30px',
+            backgroundColor: 'rgba(0, 0, 0, 0.5)'}}>
+        
             <section className="details_container">
                 <div className="img_section">
 
@@ -118,7 +125,7 @@ function TVDetailsPage(props) {
                 </div>
             </section>
 
-        </>
+        </div>
 
     )
 }

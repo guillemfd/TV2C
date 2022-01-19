@@ -27,7 +27,7 @@ function TVBestsXXPage(props) {
         isLoading === true ? <Spinner /> :
 
         <Container>
-            <h1>Best of 2021 TV series</h1>
+            <h1>Best of sXX TV series</h1>
             <hr/>
 
             <div className="cards_at_Movies_Pages">
