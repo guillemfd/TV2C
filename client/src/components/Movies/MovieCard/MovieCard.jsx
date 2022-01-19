@@ -10,7 +10,7 @@ function MovieCard({poster_path, title, release_date, vote_average, id, runtime}
     return (
         <div>
                 <div className="card-container" key={id}>
-                    <img className="movie-cover" src={IMG_API + poster_path} alt={title}/>
+                    <img className="movie-cover" src={IMG_API + poster_path} alt={`Sorry, there is no picture for "${title}"`}/>
                     <div className="movie-card">
                         <span className="card-title">{title}</span>
                         <h5 className="card-desc">Year: {release_date.slice(0, 4)}</h5>

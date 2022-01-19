@@ -35,6 +35,7 @@ function MoviesSearchBar() {
 
         <Form className="d-flex">
             <FormControl
+            style={{width: '70vw', height: '60px', margin: '10px'}}
             type="text"
             placeholder="Search for a movie"
             value={query}
@@ -44,13 +45,13 @@ function MoviesSearchBar() {
             />
             {/* <Button variant="info" >Search</Button> */}
             <Link to="/movies">
-                <Button variant="dark" size="xl">Suggest me Movies!</Button>
+                <Button variant="dark" size="xl" style={{width: '30vw', height: '60px', margin: '10px'}}>Suggest me Movies!</Button>
             </Link>
         </Form>
 
             {results.length > 0 && (
             <div>
-                <h1 style={{margin: '15px'}}>Most popular movies for "{query}"</h1>
+                <h1 style={{margin: '15px'}}>Top 20 most popular movies for "{query}"</h1>
                 <div className="cards_at_Movies_Pages">
                     {results.map((movie) => <MovieCard {...movie} key={movie.id} />)}
                 </div>

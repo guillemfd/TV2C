@@ -14,7 +14,7 @@ function TVSearchBar() {
         setQuery(e.target.value)
 
         fetch
-            (`https://api.themoviedb.org/3/search/movie?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&page=1&include_adult=false&query=${e.target.value}`)
+            (`https://api.themoviedb.org/3/search/tv?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&page=1&include_adult=false&query=${e.target.value}`)
             .then((res) => res.json())
             .then((data) => {
                 if(!data.errors) {
@@ -35,22 +35,22 @@ function TVSearchBar() {
 
         <Form className="d-flex">
             <FormControl
+            style={{width: '70vw', height: '60px', margin: '10px'}}
             type="text"
-            placeholder="Search for a movie"
+            placeholder="Search for a TV series"
             value={query}
-            className="me-1"
+            className="me-2"
             aria-label="Search"
             onChange={onChange}
             />
-            {/* <Button variant="info" >Search</Button> */}
-            <Link to="/movies">
-                <Button variant="dark" size="xl">Suggest me Movies!</Button>
+            <Link to="/tv">
+                <Button variant="dark" size="xl" style={{width: '30vw', height: '60px', margin: '10px'}}>Suggest me TV Series!</Button>
             </Link>
         </Form>
 
             {results.length > 0 && (
             <div>
-                <h1 style={{margin: '15px'}}>Most popular movies for "{query}"</h1>
+                <h1 style={{margin: '15px'}}>Top 20 most popular TV series for "{query}"</h1>
                 <div className="cards_at_Movies_Pages">
                     {results.map((movie) => <TVCard {...movie} key={movie.id} />)}
                 </div>

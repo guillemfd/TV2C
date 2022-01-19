@@ -9,7 +9,7 @@ function TVCard({poster_path, name, first_air_date, vote_average, id, }) {
     return (
         <div>
                 <div className="card-container" key={id}>
-                    <img className="movie-cover" src={IMG_API + poster_path} alt={name}/>
+                    <img className="movie-cover" src={IMG_API + poster_path} alt={`Sorry, there is no picture for "${name}"`}/>
                     <div className="movie-card">
                         <span className="card-title">{name}</span>
                         <h5 className="card-desc">Year: {first_air_date.slice(0, 4)}</h5>

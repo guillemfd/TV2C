@@ -17,9 +17,11 @@ function HomePage() {
             <hr/>
 
             <MoviesSearchBar />
-            <Link to="/movies">
+            <TVSearchBar />
+
+            {/* <Link to="/movies">
                 <Button variant="dark" size="xl">Suggested Movies</Button>
-            </Link>
+            </Link> */}
 
             {/* <TVSearchBar />
             <Link to="/tv">
