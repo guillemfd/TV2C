@@ -43,8 +43,7 @@ function AuthProviderWrapper(props) {
     verifyStoredToken()
   }
 
-
-  const logOutUser = () => {                                    // <== ADD
+  const logOutUser = () => {
     // Upon logout, remove the token from the localStorage
     localStorage.removeItem("authToken");
     

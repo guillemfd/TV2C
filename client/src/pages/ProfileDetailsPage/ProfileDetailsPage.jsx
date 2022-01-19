@@ -30,6 +30,7 @@ function ProfileDetailsPage() {
             <section className="details_container">
                 <div className="profile_desc_section">
                      <p className="description">{getUser.username}</p>
+                     <p className="description">{getUser._id}</p>
                      <p className="description">{getUser.email}</p>
                      <p className="description">{getUser.moviesWishList.length}</p>
                 </div>

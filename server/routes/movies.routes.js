@@ -1,5 +1,7 @@
 const router = require("express").Router();
 const axios = require("axios");
+const User = require("../models/User.model");
+
 
 
 // const { response } = require("../app");
@@ -208,5 +210,19 @@ router.get("/:query", async (req, res, next) => {
     console.log(err)
   }
 })
+
+//---------- TV TO SEE ------(.post   .get   .delete)-------------------------------------------------------------------------
+router.post("/toSeeTVList/:id", async (req, res) => { 
+  console.log(req.params.id)
+  console.log(req.user)
+  console.log(req.payload)
+
+    try{
+        await User.findByIdAndUpdate(req.user._id, {$push: {TVWishList: req.params.id}},);
+        res.status(204).json()
+    }catch(err){
+      console.log(err.message)
+    }
+});
 
 module.exports = router

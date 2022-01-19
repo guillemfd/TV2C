@@ -3,6 +3,7 @@ import { Navbar, Nav, Container, NavLink, NavDropdown, Form, FormControl, Button
 import { Link } from 'react-router-dom'
 import { useContext } from 'react'
 import { AuthContext } from '../../context/auth.context'
+import SearchBar from './SearchBar'
 
 
 
@@ -17,7 +18,7 @@ function NavBar() {
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav" className="justify-content-end">
 
-                <Form className="d-flex">
+                {/* <Form className="d-flex">
                     <FormControl
                     type="search"
                     placeholder="Search by title"
@@ -25,7 +26,8 @@ function NavBar() {
                     aria-label="Search"
                     />
                     <Button variant="info">Search</Button>
-                </Form>
+                </Form> */}
+            <SearchBar />
 
                 <Nav>
                     <NavDropdown title="Movies By..." id="basic-nav-dropdown">

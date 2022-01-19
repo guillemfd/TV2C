@@ -4,13 +4,22 @@ import { useParams, Link } from "react-router-dom"
 import { getOneTV } from "../../../services/tv.service"
 import Spinner from "../../../components/Spinner/Spinner"
 import {Carousel} from 'react-bootstrap'
+import { toSeeTVList } from '../../../services/tv.service'
+import { useContext } from 'react'
+import { AuthContext } from '../../../context/auth.context'
+import { getUserData } from "../../../services/auth.service"
+
 
 
 function TVDetailsPage(props) {
 
+    const { isLoggedIn, user, logOutUser } = useContext(AuthContext)
+
     const { TMDB_id } = useParams()
     const [oneTV, setOneTV] = useState()
     const [isLoading, setIsLoading] = useState(true)
+    const [getUser, setGetUser] = useState()
+
     const IMG_API = "https://image.tmdb.org/t/p/w1280"
 
 
@@ -23,6 +32,22 @@ function TVDetailsPage(props) {
             })
             .catch(err => console.log(err))
     }, [])
+
+    // useEffect(() => {
+
+    //     getUserData(user)
+    //         .then(response => {
+    //             setGetUser(response.data)
+    //             setIsLoading(false)
+    //         })
+    //         .catch(err => console.log(err))
+    // }, [])
+
+    // console.log(getUser)
+
+    const handleToSeeTVList = () => {
+        toSeeTVList (oneTV.id)
+    }
 
     // const background = {backgroundImage: `url(${IMG_API + oneTV.poster_path})`}
 
@@ -78,12 +103,11 @@ function TVDetailsPage(props) {
                         {/* <img className="company-logo" src={IMG_API + oneTV.production_companies[0].logo_path} alt={oneTV.title}/> */}
                     </p>
 
-                    <Link to={`/tv/mostPopular`}>
-                            <button className="card-button">Add to My List</button>
-                    </Link>
-                    <Link to={`/tv/mostPopular`}>
-                            <button className="card-button">Already seen!</button>
-                    </Link>
+                    {isLoggedIn ?
+                    <button className="card-button" onClick={() => handleToSeeTVList(oneTV.id)}>Add to {user.username}'s TV Series to see</button>
+                    :
+                    <div>aaa</div>
+                    }
                     
                     <a className="description" href={oneTV.homepage} target="_blank" rel="noreferrer noopener">TV Serie Homepage</a>
 
