@@ -1,10 +1,17 @@
-  
-.details_container,
-.info {
-    margin: 50px 100px 50px 50px;
-    max-width: 1200px;
+.details_background {
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  margin-top: -30px;
+}
+
+.details_container {
+    background-color: rgba(0, 0, 0, 0.726);
+    padding: 50px;
+    border-radius: 50px;
+    margin: 50px;
+    max-width: 100vw;
     display: flex;
-    overflow-x: hidden;
 }
 
 .company-logo {
@@ -19,10 +26,34 @@
     object-position: 50% 50%;
     background-position: 40% 50%;
 }
+
+.title {
+  font-weight: 700;
+  font-size: 30px;
+  color: white;
+}
+
+.tagline {
+  color: white;
+  font-weight: 200;
+  margin-bottom: 25px;
+  margin-top: -10px;
+}
   
 .description {
     margin-bottom: 15px;
     margin-top: 0px;
+    color: rgb(200, 200, 200);
+}
+
+.link_home {
+  background-color: cadetblue;
+  width: 140px;
+  padding: 6px;
+  margin-bottom: 15px;
+  margin-top: 0px;
+  font-style: none;
+  color: rgb(215, 242, 255);
 }
   
 .img_section {
@@ -44,7 +75,7 @@
     line-height: 35px;
     background-color: #e6e6e6;
     border-radius: 5px;
-    color: rgba(34, 34, 34, 0.5);
+    color: rgb(34, 34, 34);
   }
   
  

@@ -25,10 +25,14 @@ function MoviesBestHor() {
     return (
 
         <div className="HorizontalScrollContainer">
-            {isLoading === true ? <Spinner /> :
-            <HorizontalScroll >              
-                {bestAll.map((movie) => <MovieCard {...movie} key={movie.id} />)}
-            </HorizontalScroll>}
+            <div class="fade-effect-scroll left">
+            </div>
+                {isLoading === true ? <Spinner /> :
+                <HorizontalScroll >              
+                    {bestAll.map((movie) => <MovieCard {...movie} key={movie.id} />)}
+                </HorizontalScroll>}
+            <div class="fade-effect-scroll right">
+            </div>
         </div>
     )
 }

@@ -28,11 +28,15 @@ function MoviesBest2021Hor() {
         <div class="fade-effect-scroll">
 
         </div>
-            {isLoading === true ? <Spinner /> :
-            <HorizontalScroll >              
-                {best2021.map((movie) => <MovieCard {...movie} key={movie.id} />)}
-            </HorizontalScroll>}
-            <div class="fade-effect-scroll">
+            <div class="fade-effect-scroll left">
+            </div>
+                {isLoading === true ? <Spinner /> :
+                <HorizontalScroll >              
+                    {best2021.map((movie) => <MovieCard {...movie} key={movie.id} />)}
+                </HorizontalScroll>}
+            <div class="fade-effect-scroll right">
+            </div>
+        <div class="fade-effect-scroll">
 
 </div>          
         </div>
