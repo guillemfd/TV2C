@@ -27,7 +27,7 @@ function NavBar() {
                     />
                     <Button variant="info">Search</Button>
                 </Form> */}
-            <SearchBar />
+            {/* <SearchBar /> */}
 
                 <Nav>
                     <NavDropdown title="Movies By..." id="basic-nav-dropdown">

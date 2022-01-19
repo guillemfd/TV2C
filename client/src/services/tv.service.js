@@ -36,6 +36,6 @@ export function getSearch(query) {
     return TVService.get(`/${query}`)
 }
 
-export function toSeeTVList(id) {
-    return TVService.post(`toSeeTVList/${id}`)
+export function toSeeTVList(id, userId) {
+    return TVService.post(`toSeeTVList/${id}`, {userId})
 }

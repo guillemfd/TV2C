@@ -1,5 +1,6 @@
 import { Navbar, Nav, Container, NavLink, NavDropdown, Form, FormControl, Button} from 'react-bootstrap'
 import { useState } from 'react'
+import KeywordCard from './KeywordCard'
 
 
 function SearchBar() {
@@ -11,7 +12,7 @@ function SearchBar() {
         setQuery(e.target.value)
 
         fetch
-            (`https://api.themoviedb.org/3/search/movie?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&page=1&include_adult=false&query=${e.target.value}`)
+            (`https://api.themoviedb.org/3/search/keyword?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&page=1&include_adult=false&query=${e.target.value}`)
             .then((res) => res.json())
             .then((data) => {
                 if(!data.errors) {
@@ -24,7 +25,7 @@ function SearchBar() {
 
 
     return (
-
+<>
         <Form className="d-flex">
             <FormControl
             type="text"
@@ -36,6 +37,17 @@ function SearchBar() {
             />
             <Button variant="info" >Search</Button>
         </Form>
+
+
+    {results.length > 0 && (
+        <div>
+            <h1 style={{margin: '15px'}}>Top 20 most popular movies for "{query}"</h1>
+            <div className="cards_at_Movies_Pages">
+                {results.map((movie) => <KeywordCard {...movie} key={movie.id} />)}
+            </div>
+        </div>
+        )}
+        </>
     )
 
 }

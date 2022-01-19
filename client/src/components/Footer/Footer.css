@@ -1,5 +1,5 @@
-.Footer {
-    position: relative;
+/* .Footer {
+    position: fixed;
     bottom: 0;
     left: 0;
     width: 100%;
@@ -8,4 +8,31 @@
     background: rgb(33,37,41);
     font-size: 1em;
     padding: 5px;
-}
+} */
+
+
+.footer_container{
+    display: flex;
+  }
+  
+  #footer_white {
+    justify-content: center;
+    position: fixed;
+    height: 75px;
+    width: 100vw;
+    align-items: center;
+    /* flex-direction: column; */
+    background-color: rgba(33,37,41, 0.8);
+    bottom: 0px;
+  }
+  
+  .footer_img {
+    margin: 10px;
+    height: 30px;
+  }
+  
+  .footer_text {
+    margin-top: -15px;
+    color: white;
+    line-height: 2em;
+  }

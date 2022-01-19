@@ -12,7 +12,7 @@ const userSchema = new Schema(
       match: [/\S+@\S+\.\S+/, "Email not valid"]
     },
     moviesWishList: [{ type: Schema.Types.ObjectId, ref: "Movie" }],
-    TVWishList: [{ type: Schema.Types.ObjectId, ref: "TV" }],
+    TVWishList: [String],
     moviesSeenList: [{ type: Schema.Types.ObjectId, ref: "Movie" }],
     TVSeenList: [{ type: Schema.Types.ObjectId, ref: "TV" }],
   },

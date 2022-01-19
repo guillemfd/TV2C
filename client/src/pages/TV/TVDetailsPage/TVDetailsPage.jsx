@@ -46,7 +46,7 @@ function TVDetailsPage(props) {
     // console.log(getUser)
 
     const handleToSeeTVList = () => {
-        toSeeTVList (oneTV.id)
+        toSeeTVList (oneTV.id, user._id)
     }
 
     // const background = {backgroundImage: `url(${IMG_API + oneTV.poster_path})`}
@@ -114,30 +114,15 @@ function TVDetailsPage(props) {
                     <div className='cast-container'>
                         <p className='cast-text'>Most relevant actors:</p>
                         <div className='cast-wrapper'>
-                            <div className="cast-card">
-                                <img className="cast-pic" src={IMG_API + oneTV.credits.cast[0].profile_path} alt={oneTV.credits.cast[0].name}/>
-                                <p className="cast-name">{oneTV.credits.cast[0].name}</p>
-                            </div>
-                            {/* <div className="cast-card">
-                                <img className="cast-pic" src={IMG_API + oneTV.credits.cast[1].profile_path} alt={oneTV.credits.cast[0].name}/>
-                                <p className="cast-name">{oneTV.credits.cast[1].name}</p>
-                            </div>
-                            <div className="cast-card">
-                                <img className="cast-pic" src={IMG_API + oneTV.credits.cast[2].profile_path} alt={oneTV.credits.cast[0].name}/>
-                                <p className="cast-name">{oneTV.credits.cast[2].name}</p>
-                            </div>
-                            <div className="cast-card">
-                                <img className="cast-pic" src={IMG_API + oneTV.credits.cast[3].profile_path} alt={oneTV.credits.cast[0].name}/>
-                                <p className="cast-name">{oneTV.credits.cast[3].name}</p>
-                            </div>
-                            <div className="cast-card">
-                                <img className="cast-pic" src={IMG_API + oneTV.credits.cast[4].profile_path} alt={oneTV.credits.cast[0].name}/>
-                                <p className="cast-name">{oneTV.credits.cast[4].name}</p>
-                            </div>
-                            <div className="cast-card">
-                                <img className="cast-pic" src={IMG_API + oneTV.credits.cast[5].profile_path} alt={oneTV.credits.cast[0].name}/>
-                                <p className="cast-name">{oneTV.credits.cast[5].name}</p>
-                            </div> */}
+                        {oneTV.credits.cast.map((cast, i) => {
+                            return(
+                                <div className="cast-card" key={i}>
+                                    <img className="cast-pic" src={IMG_API + cast.profile_path} alt={oneTV.credits.cast[0].name}/>
+                                    <p className="cast-name">{cast.name}</p>
+                                </div>
+                            )
+                        })}
+                            
 
                         </div>
                     </div>

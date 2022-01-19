@@ -215,10 +215,10 @@ router.get("/:query", async (req, res, next) => {
 router.post("/toSeeTVList/:id", async (req, res) => { 
   console.log(req.params.id)
   console.log(req.user)
-  console.log(req.payload)
+  console.log(req.body)
 
     try{
-        await User.findByIdAndUpdate(req.user._id, {$push: {TVWishList: req.params.id}},);
+        await User.findByIdAndUpdate(req.body.userId, {$push: {TVWishList: req.params.id}},);
         res.status(204).json()
     }catch(err){
       console.log(err.message)

@@ -70,7 +70,7 @@ function SignUpForm(redirectAfterSignUp) {
             <InputGroup className="form-group">
                 <InputGroup.Text id="basic-addon2">🔑</InputGroup.Text>
                 <FormControl
-                type="text"
+                type="password"
                 name="password"
                 value={password}
                 onChange={handleInputChange}

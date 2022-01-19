@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import MoviesSearchBar from "../../components/Movies/MoviesSearchBar/MoviesSearchBar"
 import TVSearchBar from "../../components/TV/TVSearchBar/TVSearchBar"
 
-import BackGroundIMG from '../../img/HomePage_BG_White.jpg'
+import BackGroundIMG from '../../img/photo-1489599849927-2ee91cede3ba.jpg'
 import './HomePage.css'
 
 function HomePage() {

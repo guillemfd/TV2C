@@ -25,10 +25,16 @@ function MoviesBest2021Hor() {
     return (
 
         <div className="HorizontalScrollContainer">
+        <div class="fade-effect-scroll">
+
+        </div>
             {isLoading === true ? <Spinner /> :
             <HorizontalScroll >              
                 {best2021.map((movie) => <MovieCard {...movie} key={movie.id} />)}
             </HorizontalScroll>}
+            <div class="fade-effect-scroll">
+
+</div>          
         </div>
     )
 }

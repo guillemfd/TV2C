@@ -1,14 +1,15 @@
 import { Link } from 'react-router-dom'
 
-function TVCard({poster_path, name, first_air_date, vote_average, id, }) {
+function TVCard({poster_path, name, first_air_date, vote_average, id }) {
 
 
     const IMG_API = "https://image.tmdb.org/t/p/w1280"
 
-
+    console.log(name, poster_path)
     return (
         <div>
-                <div className="card-container" key={id}>
+        {poster_path && name && first_air_date && id && vote_average &&
+            <div className="card-container" key={id}>
                     <img className="movie-cover" src={IMG_API + poster_path} alt={`Sorry, there is no picture for "${name}"`}/>
                     <div className="movie-card">
                         <span className="card-title">{name}</span>
@@ -19,6 +20,8 @@ function TVCard({poster_path, name, first_air_date, vote_average, id, }) {
                         </Link>
                     </div>
                 </div>
+        }
+               
         </div>
     )
 }
