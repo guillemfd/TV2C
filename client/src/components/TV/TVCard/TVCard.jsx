@@ -5,7 +5,6 @@ function TVCard({poster_path, name, first_air_date, vote_average, id }) {
 
     const IMG_API = "https://image.tmdb.org/t/p/w1280"
 
-    console.log(name, poster_path)
     return (
         <div>
         {poster_path && name && first_air_date && id && vote_average &&

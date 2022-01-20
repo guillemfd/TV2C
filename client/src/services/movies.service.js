@@ -39,3 +39,20 @@ export function getNowInCinemas() {
 export function saveList(list) {
     return moviesService.post('/createList', list)
 }
+
+export function addToCustomListONE(id, listId) {
+    return moviesService.post(`addToCustomListONE/${id}`, {listId})
+}
+
+export function addToCustomListTWO(id, listId) {
+    return moviesService.post(`addToCustomListTWO/${id}`, {listId})
+}
+
+export function addToCustomListTHREE(id, listId) {
+    return moviesService.post(`addToCustomListTHREE/${id}`, {listId})
+}
+
+export function getOneList(listId) {
+    return moviesService.post('getOneList', {listId})
+}
+

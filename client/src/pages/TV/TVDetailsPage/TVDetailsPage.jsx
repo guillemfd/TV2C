@@ -1,5 +1,5 @@
 // import './MovieDetailsPage.css'
-import { useEffect, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import { useParams, Link } from "react-router-dom"
 import { getOneTV } from "../../../services/tv.service"
 import Spinner from "../../../components/Spinner/Spinner"
@@ -8,12 +8,13 @@ import { toSeeTVList } from '../../../services/tv.service'
 import { useContext } from 'react'
 import { AuthContext } from '../../../context/auth.context'
 import { getUserData } from "../../../services/auth.service"
+import { addToCustomListONE, addToCustomListTHREE, addToCustomListTWO } from "../../../services/movies.service"
 
 
 
 function TVDetailsPage(props) {
 
-    const { isLoggedIn, user, logOutUser } = useContext(AuthContext)
+    const { isLoggedIn, user } = useContext(AuthContext)
 
     const { TMDB_id } = useParams()
     const [oneTV, setOneTV] = useState()
@@ -24,32 +25,45 @@ function TVDetailsPage(props) {
 
 
     useEffect(() => {
-
         getOneTV(TMDB_id)
             .then(response => {
                 setOneTV(response.data)
                 setIsLoading(false)
             })
             .catch(err => console.log(err))
-    }, [])
+    }, [TMDB_id])
 
-    // useEffect(() => {
+    useEffect(() => {
+        if ( user) {
+            getUserData(`${user._id}`)
+                .then(response => {
+                    setGetUser(response.data)
+                    // setIsLoading(false)
+                })
+                .catch(err => console.log(err))
+        }
+    }, [user])
 
-    //     getUserData(user)
-    //         .then(response => {
-    //             setGetUser(response.data)
-    //             setIsLoading(false)
-    //         })
-    //         .catch(err => console.log(err))
-    // }, [])
 
     // console.log(getUser)
+
 
     const handleToSeeTVList = () => {
         toSeeTVList (oneTV.id, user._id)
     }
 
-    // const background = {backgroundImage: `url(${IMG_API + oneTV.poster_path})`}
+    const handleToCustomListONE = () => {
+        addToCustomListONE (oneTV.id, getUser.myLists[0])
+    }
+
+    const handleToCustomListTWO = () => {
+        addToCustomListTWO (oneTV.id, getUser.myLists[1])
+    }
+
+    const handleToCustomListTHREE = () => {
+        addToCustomListTHREE (oneTV.id, getUser.myLists[2])
+    }
+
 
     return (
 
@@ -106,8 +120,28 @@ function TVDetailsPage(props) {
                         {/* <img className="company-logo" src={IMG_API + oneTV.production_companies[0].logo_path} alt={oneTV.title}/> */}
                     </p>
 
-                    {isLoggedIn &&
-                    <button className="card-button" onClick={() => handleToSeeTVList(oneTV.id)}>Add to {user.username}'s TV Series to see</button>
+                {isLoggedIn &&
+                    <div>
+                        <button className="card-button" onClick={() => handleToSeeTVList(oneTV.id)}>Add to {user.username}'s TV Series to see</button>
+                    </div>
+                    }
+
+                {getUser.myLists[0] &&
+                    <div>
+                        <button className="card-button" onClick={() => handleToCustomListONE(oneTV.id)}>Add to "{getUser.myLists[0]}" list</button>
+                    </div>                    
+                    }
+
+                {getUser.myLists[1] &&
+                    <div>
+                        <button className="card-button" onClick={() => handleToCustomListTWO(oneTV.id)}>Add to "{getUser.myLists[1]}" list</button>
+                    </div>                    
+                    }
+
+                {getUser.myLists[2] &&
+                    <div>
+                        <button className="card-button" onClick={() => handleToCustomListTHREE(oneTV.id)}>Add to "{getUser.myLists[2]}" list</button>
+                    </div>                    
                     }
                     
                     <a className="description" href={oneTV.homepage} target="_blank" rel="noreferrer noopener">TV Serie Homepage</a>

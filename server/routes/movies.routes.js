@@ -225,7 +225,6 @@ router.post("/toSeeTVList/:id", async (req, res) => {
     }
 });
 
-module.exports = router
 
 //--------------------- CREATE LIST -------------------------- CREATE LIST -------------------------- CREATE LIST -------
 router.post("/createList", async (req, res, next) => { 
@@ -240,7 +239,57 @@ router.post("/createList", async (req, res, next) => {
       res.status(201).json(createList)
   } catch (err) {
       res.status(400).json(err.message)
-
   }
 
 })
+
+//---------------- ADD tmdbId TO CREATED LISTS --------------- ADD tmdbId TO CREATED LISTS --------------- ADD tmdbId TO CREATED LISTS 
+
+router.post("/addToCustomListONE/:id", async (req, res) => { 
+
+    try{
+        await List.findByIdAndUpdate(req.body.listId, {$push: {TMDBids: req.params.id}},);
+        res.status(204).json()
+    }catch(err){
+      console.log(err.message)
+    }
+});
+
+
+router.post("/addToCustomListTWO/:id", async (req, res) => { 
+
+    try{
+        await List.findByIdAndUpdate(req.body.listId, {$push: {TMDBids: req.params.id}},);
+        res.status(204).json()
+    }catch(err){
+      console.log(err.message)
+    }
+});
+
+router.post("/addToCustomListTHREE/:id", async (req, res) => { 
+
+    try{
+        await List.findByIdAndUpdate(req.body.listId, {$push: {TMDBids: req.params.id}},);
+        res.status(204).json()
+    }catch(err){
+      console.log(err.message)
+    }
+});
+
+
+//---------------- GET ONE LIST ---------------- GET ONE LIST ---------------- GET ONE LIST ---------------- GET ONE LIST 
+router.get("/getOneList", (req, res) => {
+
+  const listId = req.body.listId
+
+    List
+      .findById(listId).populate("TMDBids")
+      .then(response => res.json(response))
+      .catch(err => res.status(500).json(err))
+  })
+
+
+
+
+
+module.exports = router

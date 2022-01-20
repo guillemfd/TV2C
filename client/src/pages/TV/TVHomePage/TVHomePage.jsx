@@ -45,8 +45,6 @@ function TVHomePage() {
                 <Button variant="dark" size="xl">Best of sXX</Button>
             </Link>
             <TVBestsXXHor />
-
-            
             
         
         </Container>
