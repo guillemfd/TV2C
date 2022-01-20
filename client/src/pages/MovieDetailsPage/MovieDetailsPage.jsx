@@ -51,6 +51,7 @@ function MovieDetailsPage(props) {
                             <h5>Main Poster</h5>
                             </Carousel.Caption>
                         </Carousel.Item>
+                        {oneMovie.backdrop_path &&
                         <Carousel.Item>
                             <img
                             className="detail-movie-cover"
@@ -61,6 +62,7 @@ function MovieDetailsPage(props) {
                             <h5>Backdrop Poster</h5>
                             </Carousel.Caption>
                         </Carousel.Item>
+                        }
                     </Carousel>
 
                     </div>
@@ -72,9 +74,12 @@ function MovieDetailsPage(props) {
                         <p className="description">Duration: {convertRuntime(oneMovie.runtime)} ({oneMovie.runtime}m.)</p>
                         <p className="description" style={{marginTop: '-15px'}}>It was released on {oneMovie.release_date}, with a budget of {oneMovie.budget} $.</p>
                         <p className="description">Rating: {oneMovie.vote_average}/10 ({oneMovie.vote_count} votes)</p>
-                        <p className="description">
-                            <img className="company-logo" src={IMG_API + oneMovie.production_companies[0].logo_path} alt={oneMovie.title}/>
-                        </p>
+                        
+                        { oneMovie.production_companies.logo_path &&
+                            <p className="description">
+                                <img className="company-logo" src={IMG_API + oneMovie.production_companies[0].logo_path} alt={oneMovie.title}/>
+                            </p>
+                        }
 
                         <Link to={`/mostPopular`}>
                                 <button className="card-button">Add to My List</button>
@@ -89,41 +94,27 @@ function MovieDetailsPage(props) {
                         <div className='cast-container'>
                             <p className='cast-text'>Most relevant actors:</p>
                             <div className='cast-wrapper'>
-                                <div className="cast-card">
-                                    <img className="cast-pic" src={IMG_API + oneMovie.credits.cast[0].profile_path} alt={oneMovie.credits.cast[0].name}/>
-                                    <p className="cast-name">{oneMovie.credits.cast[0].name}</p>
+                            {oneMovie.credits.cast.slice(0, 5).map((cast, i) => {
+                            return(
+                                <div className="cast-card" key={i}>
+                                    <img className="cast-pic" src={IMG_API + cast.profile_path} alt={oneMovie.credits.cast[0].name}/>
+                                    <p className="cast-name">{cast.name}</p>
                                 </div>
-                                <div className="cast-card">
-                                    <img className="cast-pic" src={IMG_API + oneMovie.credits.cast[1].profile_path} alt={oneMovie.credits.cast[0].name}/>
-                                    <p className="cast-name">{oneMovie.credits.cast[1].name}</p>
-                                </div>
-                                <div className="cast-card">
-                                    <img className="cast-pic" src={IMG_API + oneMovie.credits.cast[2].profile_path} alt={oneMovie.credits.cast[0].name}/>
-                                    <p className="cast-name">{oneMovie.credits.cast[2].name}</p>
-                                </div>
-                                <div className="cast-card">
-                                    <img className="cast-pic" src={IMG_API + oneMovie.credits.cast[3].profile_path} alt={oneMovie.credits.cast[0].name}/>
-                                    <p className="cast-name">{oneMovie.credits.cast[3].name}</p>
-                                </div>
-                                <div className="cast-card">
-                                    <img className="cast-pic" src={IMG_API + oneMovie.credits.cast[4].profile_path} alt={oneMovie.credits.cast[0].name}/>
-                                    <p className="cast-name">{oneMovie.credits.cast[4].name}</p>
-                                </div>
-                                <div className="cast-card">
-                                    <img className="cast-pic" src={IMG_API + oneMovie.credits.cast[5].profile_path} alt={oneMovie.credits.cast[0].name}/>
-                                    <p className="cast-name">{oneMovie.credits.cast[5].name}</p>
-                                </div>
+                            )
+                        })}
+               
                             </div>
                         </div>
 
+
                         <div className="interests">
-                            <span className="interests_item">{oneMovie.genres[0].name}</span>
-                            <span className="interests_item">{oneMovie.genres[1].name}</span>
-                            {/* {{oneMovie.genres[2].name} ?
-                            <span className="interests_item">{oneMovie.genres[2].name}</span>
-                            : ""} */}
-                            {/* <span className="interests_item">{{oneMovie.genres[3].name} ? {oneMovie.genres[3].name} : ""}</span> */}
+                        {oneMovie.genres.map((genre, i) => {
+                            return(
+                                <span className="interests_item" key={i}>{genre.name}</span>
+                            )
+                        })}
                         </div>
+
                     </div>
                 </section>
             </div>

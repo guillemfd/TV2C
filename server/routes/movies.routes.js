@@ -1,6 +1,7 @@
 const router = require("express").Router();
 const axios = require("axios");
 const User = require("../models/User.model");
+const List = require("../models/List.model");
 
 
 
@@ -213,12 +214,11 @@ router.get("/:query", async (req, res, next) => {
 
 //---------- TV TO SEE ------(.post   .get   .delete)-------------------------------------------------------------------------
 router.post("/toSeeTVList/:id", async (req, res) => { 
-  console.log(req.params.id)
-  console.log(req.user)
-  console.log(req.body)
+  // console.log(req.params.id)
+  // console.log(req.body)
 
     try{
-        await User.findByIdAndUpdate(req.body.userId, {$push: {TVWishList: req.params.id}},);
+        await User.findByIdAndUpdate(req.body.userId, {$push: {toseeList: req.params.id}},);
         res.status(204).json()
     }catch(err){
       console.log(err.message)
@@ -226,3 +226,18 @@ router.post("/toSeeTVList/:id", async (req, res) => {
 });
 
 module.exports = router
+
+//--------------------- CREATE LIST -------------------------- CREATE LIST -------------------------- CREATE LIST -------
+router.post("/createList", async (req, res, next) => { 
+
+  const { listName, publishedBy, publishedUsername } = req.body
+
+  List
+    .create({ listName, publishedBy, publishedUsername })
+    .then(response => res.json(response))
+    .catch(err => {
+      console.log(err);
+      res.status(500).json({ message: "Error creating list" })
+      })
+
+})

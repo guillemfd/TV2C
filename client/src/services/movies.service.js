@@ -35,3 +35,7 @@ export function getBestOfsXX() {
 export function getNowInCinemas() {
     return moviesService.get('/nowincinemas')
 }
+
+export function saveList(list) {
+    return moviesService.post('/createList', list)
+}

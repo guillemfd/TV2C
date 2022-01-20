@@ -23,10 +23,14 @@ function TVBest2021Hor() {
     return (
 
         <div className="HorizontalScrollContainer">
-            {isLoading === true ? <Spinner /> :
-            <HorizontalScroll >              
-                {best2021TV.map((tv) => <TVCard {...tv} key={tv.id} />)}
-            </HorizontalScroll>}
+            <div class="fade-effect-scroll left">
+            </div>
+                {isLoading === true ? <Spinner /> :
+                <HorizontalScroll >              
+                    {best2021TV.map((tv) => <TVCard {...tv} key={tv.id} />)}
+                </HorizontalScroll>}
+            <div class="fade-effect-scroll right">
+            </div>
         </div>
     )
 }

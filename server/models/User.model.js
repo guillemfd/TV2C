@@ -11,10 +11,9 @@ const userSchema = new Schema(
       required: [true, "Can't be blank"],
       match: [/\S+@\S+\.\S+/, "Email not valid"]
     },
-    moviesWishList: [{ type: Schema.Types.ObjectId, ref: "Movie" }],
-    TVWishList: [String],
-    moviesSeenList: [{ type: Schema.Types.ObjectId, ref: "Movie" }],
-    TVSeenList: [{ type: Schema.Types.ObjectId, ref: "TV" }],
+    myLists: [{ type: Schema.Types.ObjectId, ref: "List" }],
+    toseeList: [String],
+    seenList: [String],
   },
   { timestamps: true }
 );
