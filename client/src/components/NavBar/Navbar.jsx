@@ -3,13 +3,30 @@ import { Navbar, Nav, Container, NavLink, NavDropdown, Form, FormControl, Button
 import { Link } from 'react-router-dom'
 import { useContext } from 'react'
 import { AuthContext } from '../../context/auth.context'
-import SearchBar from './SearchBar'
+import { useEffect, useState } from "react"
+import { getUserData } from '../../services/auth.service'
 
 
 
 function NavBar() {
 
     const { isLoggedIn, user, logOutUser } = useContext(AuthContext)
+    const [getUser, setGetUser] = useState()
+
+    useEffect(() => {
+        if ( user) {
+            getUserData(`${user._id}`)
+                .then(response => {
+                    setGetUser(response.data)
+                    // setIsLoading(false)
+                })
+                .catch(err => console.log(err))
+        }
+    }, [user])
+
+    console.log('HOLA getUser')
+    console.log(getUser)
+
 
     return (
         <Navbar bg="dark" expand="lg" variant="dark">
@@ -18,46 +35,32 @@ function NavBar() {
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav" className="justify-content-end">
 
-                {/* <Form className="d-flex">
-                    <FormControl
-                    type="search"
-                    placeholder="Search by title"
-                    className="me-1"
-                    aria-label="Search"
-                    />
-                    <Button variant="info">Search</Button>
-                </Form> */}
-            {/* <SearchBar /> */}
-
                 <Nav>
                     <NavDropdown title="Movies By..." id="basic-nav-dropdown">
                         <NavDropdown.Item >
                             <Link to="/movies/mostPopular" className='dropdown-item'>Most Popular</Link>
                         </NavDropdown.Item>
                         <NavDropdown.Item >
-                            <Link to="/mostPopular" className='dropdown-item'>Latest Blockbusters</Link>
+                            <Link to="/movies/shorterthan90" className='dropdown-item'>Shorter than 90'</Link>
                         </NavDropdown.Item>
                         <NavDropdown.Item >
-                            <Link to="/movies/shorterthan90" className='dropdown-item'>Shorter than 90'</Link>
+                            <Link to="/movies/nowincinemas" className='dropdown-item'>Now in cinemas</Link>
                         </NavDropdown.Item>    
                                 <NavDropdown.Divider />
                         <NavDropdown.Item >
-                            <span className='dropdown-item' style={{textAlign: 'left', fontWeight: 'bold'}}>Best by...</span>
+                            <span className='dropdown-item' style={{fontWeight: 'bold'}}>Best of...</span>
                         </NavDropdown.Item>
                         <NavDropdown.Item >
-                            <Link to="/mostPopular" className='dropdown-item'>Viewers Rate</Link>
+                            <Link to="/movies/bestofalltime" className='dropdown-item'>All Time</Link>
                         </NavDropdown.Item>
                         <NavDropdown.Item >
-                            <Link to="/mostPopular" className='dropdown-item'>All Time</Link>
+                            <Link to="/movies/bestof2021" className='dropdown-item'>Last year</Link>
                         </NavDropdown.Item>
                         <NavDropdown.Item >
-                            <Link to="/mostPopular" className='dropdown-item'>2010-2020</Link>
+                            <Link to="/movies/bestofsXXI" className='dropdown-item'>XXI Century</Link>
                         </NavDropdown.Item> 
                         <NavDropdown.Item >
-                            <Link to="/mostPopular" className='dropdown-item'>2000-2010</Link>
-                        </NavDropdown.Item>
-                        <NavDropdown.Item >
-                            <Link to="/mostPopular" className='dropdown-item'>XX Century</Link>
+                            <Link to="/movies/bestofsXX" className='dropdown-item'>XX Century</Link>
                         </NavDropdown.Item>
                                 <NavDropdown.Divider />
                     </NavDropdown>
@@ -68,48 +71,26 @@ function NavBar() {
                             <Link to="/tv/mostPopular" className='dropdown-item'>Most Popular</Link>
                         </NavDropdown.Item>
                         <NavDropdown.Item >
-                            <Link to="/mostPopular" className='dropdown-item'>Latest Blockbusters</Link>
-                        </NavDropdown.Item>
-                        <NavDropdown.Item >
-                            <Link to="/mostPopular" className='dropdown-item'>Shorter than 20'</Link>
+                            <Link to="/tv/shorterthan25" className='dropdown-item'>Shorter than 25'</Link>
                         </NavDropdown.Item>    
                                 <NavDropdown.Divider />
                         <NavDropdown.Item >
-                            <span className='dropdown-item' style={{textAlign: 'left', fontWeight: 'bold'}}>Best by...</span>
+                            <span className='dropdown-item' style={{fontWeight: 'bold'}}>Best of...</span>
                         </NavDropdown.Item>
                         <NavDropdown.Item >
-                            <Link to="/mostPopular" className='dropdown-item'>Viewers Rate</Link>
+                            <Link to="/tv/bestofalltime" className='dropdown-item'>All Time</Link>
                         </NavDropdown.Item>
                         <NavDropdown.Item >
-                            <Link to="/mostPopular" className='dropdown-item'>All Time</Link>
+                            <Link to="/tv/bestof2021" className='dropdown-item'>Last year</Link>
                         </NavDropdown.Item>
                         <NavDropdown.Item >
-                            <Link to="/mostPopular" className='dropdown-item'>2010-2020</Link>
+                            <Link to="/tv/bestofsXXI" className='dropdown-item'>XXI Century</Link>
                         </NavDropdown.Item> 
                         <NavDropdown.Item >
-                            <Link to="/mostPopular" className='dropdown-item'>2000-2010</Link>
-                        </NavDropdown.Item>
-                        <NavDropdown.Item >
-                            <Link to="/mostPopular" className='dropdown-item'>XX Century</Link>
+                            <Link to="/tv/bestofsXX" className='dropdown-item'>XX Century</Link>
                         </NavDropdown.Item>
                                 <NavDropdown.Divider />
-                    </NavDropdown>
-
-
-
-                    {/* <NavDropdown title="Profile" id="basic-nav-dropdown">
-                        <NavDropdown.Item href="#action/3.1">Profile</NavDropdown.Item>
-                        <NavDropdown.Item href="#action/3.2">Modify Profile</NavDropdown.Item>
-                        <NavDropdown.Divider />
-                        <NavDropdown.Item href="#action/3.3">Log Out</NavDropdown.Item>
-                    </NavDropdown> */}
-
-
-                    {/* <Navbar.Collapse className="justify-content-end">
-                        <Navbar.Text>
-                            Signed in as: <a href="/user">Guillem</a>
-                        </Navbar.Text>
-                    </Navbar.Collapse> */}
+                    </NavDropdown>            
 
 
                     {isLoggedIn ?
@@ -117,7 +98,7 @@ function NavBar() {
 
                             <NavDropdown title="My Lists" id="basic-nav-dropdown">
                                 <NavDropdown.Item >
-                                    <span className='dropdown-item' style={{textAlign: 'left', fontWeight: 'bold'}}>Movies</span>
+                                    <span className='dropdown-item' style={{textAlign: 'left', fontWeight: 'bold'}}>Default Lists</span>
                                 </NavDropdown.Item>
                                 <NavDropdown.Item >
                                     <Link to="/mostPopular" className='dropdown-item'>Wish List</Link>
@@ -126,29 +107,30 @@ function NavBar() {
                                     <Link to="/mostPopular" className='dropdown-item'>Already Seen</Link>
                                 </NavDropdown.Item>
                                             <NavDropdown.Divider />
+                            {/* {getUser.myLists[0] && 
+                                <div>
                                 <NavDropdown.Item >
-                                    <span className='dropdown-item' style={{textAlign: 'left', fontWeight: 'bold'}}>TV Series</span>
+                                    <span className='dropdown-item' style={{textAlign: 'left', fontWeight: 'bold'}}>Custom Lists</span>
                                 </NavDropdown.Item>
                                 <NavDropdown.Item >
-                                    <Link to="/movies/mostPopular" className='dropdown-item'>Wish List</Link>
+                                    <Link to={`/myLists/${getUser.myLists[0]}`} className='dropdown-item'>List 1 "{getUser.myLists[0]}"</Link>
                                 </NavDropdown.Item>
+                                </div>
+                            }
+                            {getUser.myLists[1] &&
                                 <NavDropdown.Item >
-                                    <Link to="/mostPopular" className='dropdown-item'>Already Seen</Link>
+                                    <Link to="/myListTWO" className='dropdown-item'>List 2 "{getUser.myLists[1]}"</Link>
                                 </NavDropdown.Item>
+                            }
+                            {getUser.myLists[2] &&
+                                <NavDropdown.Item >
+                                    <Link to="/myListTHREE" className='dropdown-item'>List 3 "{getUser.myLists[2]}"</Link>
+                                </NavDropdown.Item>
+                            } */}
                             </NavDropdown>
 
-                            <NavDropdown title="My Profile" id="basic-nav-dropdown">
-                                <NavDropdown.Item >
-                                    <span className='dropdown-item' style={{textAlign: 'left', fontWeight: 'bold'}}>{user?.username}{user?.email}</span>
-                                </NavDropdown.Item>
-                                <NavDropdown.Item >
-                                    <Link to={`/myprofile/${user._id}`} className='dropdown-item'>My Profile</Link>
-                                </NavDropdown.Item>
-                                <NavDropdown.Item >
-                                    <Link to="/editprofile" className='dropdown-item'>Edit Profile</Link>
-                                </NavDropdown.Item>
-                            </NavDropdown>
 
+                            <NavLink as="span" className="nav-link">Logged in as {user?.username}</NavLink>
                             <NavLink as="span" onClick={logOutUser} className="nav-link">Log Out</NavLink>
                         </>
                         :

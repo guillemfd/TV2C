@@ -12,8 +12,8 @@ function HomePage() {
             <div id="HomePageBackGround">
                 <img src={BackGroundIMG} alt="HomePageBackGround"></img>
             </div>
-            <h1 style={{color: 'white', textShadow: '2px 2px #000000', fontSize: '50px'}}>Welcome to TV2C app</h1>
-            <h5 style={{color: 'grey', textShadow: 'white'}}>Make personalised lists, update your "To See" list or just look for new moives & TV Series</h5>
+            <h1 className="Page_Title">Welcome to TV2C app</h1>
+            <h5 className="Page_Subtitle">Make personalised lists, update your "To See" list or just look for new movies & TV Series</h5>
             <hr/>
 
             <MoviesSearchBar />

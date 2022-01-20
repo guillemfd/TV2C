@@ -278,12 +278,23 @@ router.post("/addToCustomListTHREE/:id", async (req, res) => {
 
 
 //---------------- GET ONE LIST ---------------- GET ONE LIST ---------------- GET ONE LIST ---------------- GET ONE LIST 
-router.get("/getOneList", (req, res) => {
+router.get("/getListONE/:listId", async (req, res) => {
 
-  const listId = req.body.listId
+  // const listId = req.body.listId
+console.log("req.params.listId")
+console.log(req.params.listId)
+
+    // try{
+    //   const userListONE = await  List.findById(req.params.listId).populate
+    //   res.status(200).json(res)
+    // }catch(err){
+    //   console.log(err.message)
+    // }
+
+    const id = req.params.listId
 
     List
-      .findById(listId).populate("TMDBids")
+      .findById(id)
       .then(response => res.json(response))
       .catch(err => res.status(500).json(err))
   })

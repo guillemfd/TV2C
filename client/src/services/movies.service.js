@@ -52,7 +52,6 @@ export function addToCustomListTHREE(id, listId) {
     return moviesService.post(`addToCustomListTHREE/${id}`, {listId})
 }
 
-export function getOneList(listId) {
-    return moviesService.post('getOneList', {listId})
+export function getListONE(listId) {
+    return moviesService.get(`getListONE/${listId}`)
 }
-

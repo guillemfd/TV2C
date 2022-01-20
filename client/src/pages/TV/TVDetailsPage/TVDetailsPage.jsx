@@ -1,5 +1,5 @@
 // import './MovieDetailsPage.css'
-import { useEffect, useRef, useState } from "react"
+import { useEffect, useState } from "react"
 import { useParams, Link } from "react-router-dom"
 import { getOneTV } from "../../../services/tv.service"
 import Spinner from "../../../components/Spinner/Spinner"
@@ -108,8 +108,8 @@ function TVDetailsPage(props) {
 
                 <div className="profile_desc_section">
                 {oneTV.name &&
-                    <h2 style={{fontWeight: '700'}}>{oneTV.name}</h2>}
-                    <h4 style={{color: 'white', fontWeight: '200', marginBottom: '25px'}}>{oneTV.tagline}</h4>
+                    <h2 className="title">{oneTV.name}</h2>}
+                    <h4 className="tagline">{oneTV.tagline}</h4>
                     {/* <p className="description">Created by: {oneTV.created_by[0].name}/p> */}
                     <p className="description">{oneTV.overview}</p>
                     <p className="description">It has a total of {oneTV.number_of_seasons} seasons, with {oneTV.number_of_episodes} episodes for each season, and a duration of {oneTV.episode_run_time.slice(0, 1)} minutes each episode.</p>

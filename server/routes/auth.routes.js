@@ -138,8 +138,15 @@ router.get('/verify', isAuthenticated, (req, res, next) => {       // <== CREATE
 
 
   //això va a http://localhost:5005/api/auth/myprofile/:userId  // <== GOES TO MY PROFILE -----------------
-router.get("/myprofile/:userId", async (req, res) => {
+router.get("/myprofile/:userId", (req, res) => {
     const id = req.params.userId
+
+    // try{
+    //     await User.findById(id)
+    //     res.status(200).json(res)
+    // }catch(err){
+    //     console.log(err.message)
+    // }
     User
       .findById(id)
       .then(response => res.json(response))

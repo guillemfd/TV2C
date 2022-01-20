@@ -21,6 +21,7 @@ import TVBest2021Page from '../pages/TV/TVBest2021Page/TVBest2021Page'
 import TVBestsXXIPage from '../pages/TV/TVBestsXXIPage/TVBestsXXIPage'
 import TVBestsXXPage from '../pages/TV/TVBestsXXPage/TVBestsXXPage'
 import Page404 from '../pages/404/404'
+import ListONEPage from '../pages/ListONEPage/ListONEPage'
 
 
 
@@ -34,6 +35,7 @@ function AppRoutes() {
             <Route path="/login" element={<LogInPage />} />
             <Route path="/myprofile/:userId" element={<ProfileDetailsPage />} />
 
+            <Route path="/myLists/:listId" element={<ListONEPage />} />
 
             <Route path="/movies" element={<MoviesHomePage />} />
             <Route path="/movies/mostPopular" element={<PopularMoviesPage />} />
@@ -44,7 +46,6 @@ function AppRoutes() {
             <Route path="/movies/bestofsXXI" element={<MoviesBestsXXIPage />} />
             <Route path="/movies/bestofsXX" element={<MoviesBestsXXPage />} />
             <Route path="/movies/nowincinemas" element={<MoviesInCinemasPage />} />
-
 
             <Route path="/tv" element={<TVHomePage />} />
             <Route path="/tv/mostPopular" element={<TVPopularPage />} />
