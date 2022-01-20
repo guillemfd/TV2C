@@ -232,12 +232,15 @@ router.post("/createList", async (req, res, next) => {
 
   const { listName, publishedBy, publishedUsername } = req.body
 
-  List
-    .create({ listName, publishedBy, publishedUsername })
-    .then(response => res.json(response))
-    .catch(err => {
-      console.log(err);
-      res.status(500).json({ message: "Error creating list" })
-      })
+  try {
+    const createList = await List.create({ listName, publishedBy, publishedUsername })
+
+    await User.findByIdAndUpdate(publishedBy, 
+      {$push: {myLists: createList._id}},)
+      res.status(201).json(createList)
+  } catch (err) {
+      res.status(400).json(err.message)
+
+  }
 
 })
