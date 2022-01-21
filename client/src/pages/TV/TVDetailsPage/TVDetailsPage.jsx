@@ -3,12 +3,12 @@ import { useEffect, useState } from "react"
 import { useParams, Link } from "react-router-dom"
 import { deleteTVWatched, getOneTV, seenTVList } from "../../../services/tv.service"
 import Spinner from "../../../components/Spinner/Spinner"
-import {Carousel} from 'react-bootstrap'
+import { Carousel, Button } from 'react-bootstrap'
 import { toSeeTVList } from '../../../services/tv.service'
 import { useContext } from 'react'
 import { AuthContext } from '../../../context/auth.context'
 import { getUserData } from "../../../services/auth.service"
-import { addToCustomListONE, addToCustomListTHREE, addToCustomListTWO } from "../../../services/movies.service"
+import { addToCustomListONE, addToCustomListTHREE, addToCustomListTWO, getListONE } from "../../../services/movies.service"
 
 
 
@@ -19,7 +19,12 @@ function TVDetailsPage(props) {
     const { TMDB_id } = useParams()
     const [oneTV, setOneTV] = useState()
     const [isLoading, setIsLoading] = useState(true)
-    const [getUser, setGetUser] = useState()
+    // const [getUser, setGetUser] = useState()
+    const [listONE, setListONE] = useState([])
+    const [listTWO, setListTWO] = useState([])
+    const [listTHREE, setListTHREE] = useState([])
+
+
 
     const IMG_API = "https://image.tmdb.org/t/p/w1280"
 
@@ -33,19 +38,46 @@ function TVDetailsPage(props) {
             .catch(err => console.log(err))
     }, [TMDB_id])
 
+    // useEffect(() => {
+    //     if ( user) {
+    //         getUserData(`${user._id}`)
+    //             .then(response => {
+    //                 setGetUser(response.data)
+    //                 // setIsLoading(false)
+    //             })
+    //             .catch(err => console.log(err))
+    //     }
+    // }, [user])
+
+    // console.log(user)
+
     useEffect(() => {
-        if ( user) {
-            getUserData(`${user._id}`)
-                .then(response => {
-                    setGetUser(response.data)
+            getListONE(user.myLists[0])
+                .then(response => { 
+                    setListONE(response.data)
                     // setIsLoading(false)
                 })
-                .catch(err => console.log(err))
-        }
+                .catch(error => console.log(error))
     }, [user])
 
+    useEffect(() => {
+        getListONE(user.myLists[1])
+            .then(response => { 
+                setListTWO(response.data)
+                // setIsLoading(false)
+            })
+            .catch(error => console.log(error))
+    }, [user])
 
-    // console.log(getUser)
+    useEffect(() => {
+        getListONE(user.myLists[2])
+            .then(response => { 
+                setListTHREE(response.data)
+                // setIsLoading(false)
+            })
+            .catch(error => console.log(error)) 
+    }, [user])
+
 
 
     const handleToSeeTVList = () => {
@@ -58,15 +90,15 @@ function TVDetailsPage(props) {
     }
 
     const handleToCustomListONE = () => {
-        addToCustomListONE (oneTV.id, getUser.myLists[0])
+        addToCustomListONE (oneTV.id, user.myLists[0])
     }
 
     const handleToCustomListTWO = () => {
-        addToCustomListTWO (oneTV.id, getUser.myLists[1])
+        addToCustomListTWO (oneTV.id, user.myLists[1])
     }
 
     const handleToCustomListTHREE = () => {
-        addToCustomListTHREE (oneTV.id, getUser.myLists[2])
+        addToCustomListTHREE (oneTV.id, user.myLists[2])
     }
 
 
@@ -84,6 +116,9 @@ function TVDetailsPage(props) {
             <section className="details_container">
                 <div className="img_section">
 
+                <Link to="/tv">
+                    <Button variant="dark" size="m" style={{width: '150px', height: '60px', margin: '10px', marginLeft: '40px'}}>Back to TV Series</Button>
+                </Link>
                 <Carousel variant="dark">
                     <Carousel.Item>
                         <img
@@ -138,19 +173,19 @@ function TVDetailsPage(props) {
                     </div>
                 }
 
-                {getUser.myLists[0] &&
+                {user.myLists[0] &&
                     <div>
-                        <button className="card-button" onClick={() => handleToCustomListONE(oneTV.id)}>My list one</button>
+                        <button className="card-button" onClick={() => handleToCustomListONE(oneTV.id)}>{listONE.listName}</button>
                     </div>                    
                     }
 
-                {getUser.myLists[1] &&
+                {user.myLists[1] &&
                     <div>
                         <button className="card-button" onClick={() => handleToCustomListTWO(oneTV.id)}>My list two</button>
                     </div>                    
                     }
 
-                {getUser.myLists[2] &&
+                {user.myLists[2] &&
                     <div>
                         <button className="card-button" onClick={() => handleToCustomListTHREE(oneTV.id)}>My list three</button>
                     </div>                    

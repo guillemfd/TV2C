@@ -3,7 +3,7 @@ import { useEffect, useState } from "react"
 import { useParams, Link } from "react-router-dom"
 import { addToCustomListONE, addToCustomListTHREE, addToCustomListTWO, deleteMovieWatched, getOneMovie, seenMovieList, toSeeMovieList } from "../../services/movies.service"
 import Spinner from "../../components/Spinner/Spinner"
-import {Carousel} from 'react-bootstrap'
+import { Carousel, Button } from 'react-bootstrap'
 import { useContext } from 'react'
 import { AuthContext } from '../../context/auth.context'
 import { getUserData } from '../../services/auth.service'
@@ -80,7 +80,9 @@ function MovieDetailsPage(props) {
             <div className="details_background" style={{backgroundImage: `url(${IMG_API + oneMovie.poster_path})`}}>
                 <section className="details_container">
                     <div className="img_section">
-
+                    <Link to="/movies">
+                        <Button variant="dark" size="m" style={{width: '150px', height: '60px', margin: '10px', marginLeft: '40px'}}>Back to movies</Button>
+                    </Link>
                     <Carousel variant="dark">
                         <Carousel.Item>
                             <img

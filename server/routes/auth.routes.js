@@ -12,7 +12,7 @@ const { isAuthenticated } = require('./../middlewares/jwt.middleware')
 
 // POST /auth/signup  - Creates a new user in the database -------------------------------------------------------------------------
 router.post('/signup', (req, res) => {
-const { username, password, email } = req.body;
+const { username, password, email, myLists, toseeTVList, seenTVList, toseeMovieList, seenMovieList } = req.body;
 
 // Check if email or password or name are provided as empty string 
 if (email === '' || password === '' || username === '') {
@@ -51,15 +51,15 @@ User
 
         // Create the new user in the database
         // We return a pending promise, which allows us to chain another `then` 
-        return User.create({ email, password: hashedPassword, username });
+        return User.create({ email, password: hashedPassword, username, myLists, toseeTVList, seenTVList, toseeMovieList, seenMovieList  });
     })
     .then((createdUser) => {
     // Deconstruct the newly created user object to omit the password
     // We should never expose passwords publicly
-    const { email, username, _id } = createdUser;
+    const { email, username, _id, myLists, toseeTVList, seenTVList, toseeMovieList, seenMovieList  } = createdUser;
     
     // Create a new object that doesn't expose the password
-    const user = { email, username, _id };
+    const user = { email, username, _id, myLists, toseeTVList, seenTVList, toseeMovieList, seenMovieList  };
 
     // Send a json response containing the user object
     res.status(201).json({ user: user });
@@ -74,7 +74,7 @@ User
 
 // POST  /auth/login - Verifies email and password and returns a JWT --------------------------------------------
 router.post('/login', (req, res, next) => {
-    const { username, password, email } = req.body;
+    const { username, password, email, myLists, toseeTVList, seenTVList, toseeMovieList, seenMovieList  } = req.body;
   
     // Check if email or password are provided as empty string 
     if (username === '' || password === '') {
@@ -98,10 +98,10 @@ router.post('/login', (req, res, next) => {
     
             if (passwordCorrect) {
             // Deconstruct the user object to omit the password
-            const { _id, username, email } = foundUser;
+            const { _id, username, email, myLists, toseeTVList, seenTVList, toseeMovieList, seenMovieList  } = foundUser;
             
             // Create an object that will be set as the token payload. This is the data that will be sent to the front.
-            const payload = { _id, username, email };
+            const payload = { _id, username, email, myLists, toseeTVList, seenTVList, toseeMovieList, seenMovieList  };
     
             // Create and sign the token
             const authToken = jwt.sign( 

@@ -2,7 +2,7 @@ import './NavBar.css'
 import { Navbar, Nav, Container, NavLink, NavDropdown, Form, FormControl, Button} from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import { useContext } from 'react'
-import { AuthContext } from '../../context/auth.context'
+import { AuthContext, verifyStoredToken } from '../../context/auth.context'
 import { useEffect, useState } from "react"
 import { getUserData } from '../../services/auth.service'
 
@@ -11,21 +11,29 @@ import { getUserData } from '../../services/auth.service'
 function NavBar() {
 
     const { isLoggedIn, user, logOutUser } = useContext(AuthContext)
-    const [getUser, setGetUser] = useState()
 
     useEffect(() => {
-        if ( user) {
-            getUserData(`${user._id}`)
-                .then(response => {
-                    setGetUser(response.data)
-                    // setIsLoading(false)
-                })
-                .catch(err => console.log(err))
-        }
+        return () => {
+            console.log("cleaned up");
+          };
     }, [user])
 
-    console.log('HOLA getUser')
-    console.log(getUser)
+
+    // const [getUser, setGetUser] = useState()
+
+    // useEffect(() => {
+    //     if ( user) {
+    //         getUserData(`${user._id}`)
+    //             .then(response => {
+    //                 setGetUser(response.data)
+    //                 // setIsLoading(false)
+    //             })
+    //             .catch(err => console.log(err))
+    //     }
+    // }, [user])
+
+    // console.log('HOLA getUser')
+    // console.log(getUser)
 
 
     return (
@@ -37,6 +45,9 @@ function NavBar() {
 
                 <Nav>
                     <NavDropdown title="Movies By..." id="basic-nav-dropdown">
+                        <NavDropdown.Item >
+                            <Link to="/movies" className='dropdown-item'>View All</Link>
+                        </NavDropdown.Item>
                         <NavDropdown.Item >
                             <Link to="/movies/mostPopular" className='dropdown-item'>Most Popular</Link>
                         </NavDropdown.Item>
@@ -54,7 +65,7 @@ function NavBar() {
                             <Link to="/movies/bestofalltime" className='dropdown-item'>All Time</Link>
                         </NavDropdown.Item>
                         <NavDropdown.Item >
-                            <Link to="/movies/bestof2021" className='dropdown-item'>Last year</Link>
+                            <Link to="/movies/bestof2021" className='dropdown-item'>Last Year</Link>
                         </NavDropdown.Item>
                         <NavDropdown.Item >
                             <Link to="/movies/bestofsXXI" className='dropdown-item'>XXI Century</Link>
@@ -67,6 +78,9 @@ function NavBar() {
 
 
                     <NavDropdown title="TV Series By..." id="basic-nav-dropdown">
+                        <NavDropdown.Item >
+                            <Link to="/tv" className='dropdown-item'>View All</Link>
+                        </NavDropdown.Item>
                         <NavDropdown.Item >
                             <Link to="/tv/mostPopular" className='dropdown-item'>Most Popular</Link>
                         </NavDropdown.Item>
@@ -81,7 +95,7 @@ function NavBar() {
                             <Link to="/tv/bestofalltime" className='dropdown-item'>All Time</Link>
                         </NavDropdown.Item>
                         <NavDropdown.Item >
-                            <Link to="/tv/bestof2021" className='dropdown-item'>Last year</Link>
+                            <Link to="/tv/bestof2021" className='dropdown-item'>Last Year</Link>
                         </NavDropdown.Item>
                         <NavDropdown.Item >
                             <Link to="/tv/bestofsXXI" className='dropdown-item'>XXI Century</Link>
@@ -106,26 +120,26 @@ function NavBar() {
                                 <NavDropdown.Item >
                                     <Link to="/mostPopular" className='dropdown-item'>Already Seen</Link>
                                 </NavDropdown.Item>
-                                            <NavDropdown.Divider />
-                            {/* {getUser.myLists[0] &&  */}
-                            {getUser&& 
-                                <div>
+                                            <NavDropdown.Divider />                            
+                                
                                 <NavDropdown.Item >
                                     <span className='dropdown-item' style={{textAlign: 'left', fontWeight: 'bold'}}>Custom Lists</span>
                                 </NavDropdown.Item>
+                            {user.myLists[0] &&
+                                <div> 
                                 <NavDropdown.Item >
-                                    <Link to={`/myLists/${getUser.myLists[0]}`} className='dropdown-item'>List 1</Link>
+                                    <Link to={`/myLists/${user.myLists[0]}`} className='dropdown-item'>List 1</Link>
                                 </NavDropdown.Item>
                                 </div>
                             }
-                            {getUser &&
+                            {user.myLists[1] &&
                                 <NavDropdown.Item >
-                                    <Link to={`/myLists/${getUser.myLists[1]}`} className='dropdown-item'>List 2</Link>
+                                    <Link to={`/myLists/${user.myLists[1]}`} className='dropdown-item'>List 2</Link>
                                 </NavDropdown.Item>
                             }
-                            {getUser &&
+                            {user.myLists[2] &&
                                 <NavDropdown.Item >
-                                    <Link to={`/myLists/${getUser.myLists[2]}`} className='dropdown-item'>List 3</Link>
+                                    <Link to={`/myLists/${user.myLists[2]}`} className='dropdown-item'>List 3</Link>
                                 </NavDropdown.Item>
                             }
                             </NavDropdown>

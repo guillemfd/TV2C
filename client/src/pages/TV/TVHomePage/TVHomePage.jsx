@@ -12,7 +12,7 @@ function TVHomePage() {
     return (
         <Container>
 
-            <h1 style={{color: 'grey', textShadow: '2px 2px #000000', fontSize: '80px'}}>Select a list</h1>
+            <h1 className="Page_Title">Select a list</h1>
             <hr/>
 
 
