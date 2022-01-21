@@ -23,6 +23,7 @@ import TVBestsXXPage from '../pages/TV/TVBestsXXPage/TVBestsXXPage'
 import Page404 from '../pages/404/404'
 import ListONEPage from '../pages/ListONEPage/ListONEPage'
 import ListToSeeTVPage from '../pages/ListToSeeTV/ListToSeeTV'
+import ListWatchedPage from '../pages/ListWatchedPage/ListWatchedPage'
 
 
 
@@ -38,7 +39,7 @@ function AppRoutes() {
 
             <Route path="/myLists/:listId" element={<ListONEPage />} />
             <Route path="/myLists/ListToSeeTV" element={<ListToSeeTVPage />} />
-
+            <Route path="/myLists/AlreadyWatched" element={<ListWatchedPage />} />
 
             <Route path="/movies" element={<MoviesHomePage />} />
             <Route path="/movies/mostPopular" element={<PopularMoviesPage />} />

@@ -1,26 +1,57 @@
 import './MovieDetailsPage.css'
 import { useEffect, useState } from "react"
 import { useParams, Link } from "react-router-dom"
-import { addToCustomListONE, addToCustomListTHREE, addToCustomListTWO, deleteMovieWatched, getOneMovie, seenMovieList, toSeeMovieList } from "../../services/movies.service"
+import { addToCustomListONE, addToCustomListTHREE, addToCustomListTWO, deleteMovieWatched, getListONE, getOneMovie, seenMovieList, toSeeMovieList } from "../../services/movies.service"
 import Spinner from "../../components/Spinner/Spinner"
 import { Carousel, Button } from 'react-bootstrap'
 import { useContext } from 'react'
 import { AuthContext } from '../../context/auth.context'
 import { getUserData } from '../../services/auth.service'
+import { deleteTVWatched, seenTVList, toSeeTVList } from '../../services/tv.service'
+
 
 
 
 function MovieDetailsPage(props) {
 
-    const { isLoggedIn, user } = useContext(AuthContext)
+    const { isLoggedIn, user, updateUser } = useContext(AuthContext)
 
     const { TMDB_id } = useParams()
     const [oneMovie, setOneMovie] = useState()
     const [isLoading, setIsLoading] = useState(true)
     const [getUser, setGetUser] = useState()
+    const [listONE, setListONE] = useState([])
+    const [listTWO, setListTWO] = useState([])
+    const [listTHREE, setListTHREE] = useState([])
 
     const IMG_API = "https://image.tmdb.org/t/p/w1280"
 
+    useEffect(() => {
+        getListONE(user.myLists[0])
+            .then(response => { 
+                setListONE(response.data)
+                // setIsLoading(false)
+            })
+            .catch(error => console.log(error))
+    }, [user])
+
+    useEffect(() => {
+        getListONE(user.myLists[1])
+            .then(response => { 
+                setListTWO(response.data)
+                // setIsLoading(false)
+            })
+            .catch(error => console.log(error))
+    }, [user])
+
+    useEffect(() => {
+        getListONE(user.myLists[2])
+            .then(response => { 
+                setListTHREE(response.data)
+                // setIsLoading(false)
+            })
+            .catch(error => console.log(error)) 
+    }, [user])
 
     useEffect(() => {
 
@@ -51,15 +82,23 @@ function MovieDetailsPage(props) {
         return rhours + "h " + rminutes + "m";
       };
 
-    const handleToSeeMovieList = () => {
-        toSeeMovieList (oneMovie.title, user._id)
+    // const handleToSeeMovieList = () => {
+    //     toSeeMovieList (oneMovie.title, user._id)
+    // }
+
+    const handleToSeeTVList = () => {
+        toSeeTVList (oneMovie.title, user._id)
     }
 
-    const handleSeenMovieList = () => {
-        deleteMovieWatched (oneMovie.title, user._id)
-        seenMovieList (oneMovie.title, user._id)
-    }
+    // const handleSeenMovieList = () => {
+    //     deleteMovieWatched (oneMovie.title, user._id)
+    //     seenMovieList (oneMovie.title, user._id)
+    // }
 
+    const handleSeenTVList = () => {
+        deleteTVWatched (oneMovie.title, user._id)
+        seenTVList (oneMovie.title, user._id)
+    }
 
     const handleToCustomListONE = () => {
         addToCustomListONE (oneMovie.title, getUser.myLists[0])
@@ -83,8 +122,8 @@ function MovieDetailsPage(props) {
                     <Link to="/movies">
                         <Button variant="dark" size="m" style={{width: '150px', height: '60px', margin: '10px', marginLeft: '40px'}}>Back to movies</Button>
                     </Link>
-                    <Carousel variant="dark">
-                        <Carousel.Item>
+                    <Carousel variant="dark" fade>
+                        <Carousel.Item interval={5000}>
                             <img
                             className="detail-movie-cover"
                             src={IMG_API + oneMovie.poster_path}
@@ -95,7 +134,7 @@ function MovieDetailsPage(props) {
                             </Carousel.Caption>
                         </Carousel.Item>
                         {oneMovie.backdrop_path &&
-                        <Carousel.Item>
+                        <Carousel.Item interval={5000}>
                             <img
                             className="detail-movie-cover"
                             src={IMG_API + oneMovie.backdrop_path}
@@ -128,31 +167,31 @@ function MovieDetailsPage(props) {
                     {isLoggedIn &&
                     <div>
                         <div>
-                            <button className="card-button" onClick={() => handleToSeeMovieList(oneMovie.id)}>Add to movies to see list</button>
+                            <button className="card-button" onClick={() => handleToSeeTVList(oneMovie.id)}>Add to: "To see list"</button>
                         </div>
                     
                         <div>
-                            <button className="card-button" style={{backgroundColor: 'coral'}} onClick={() => handleSeenMovieList(oneMovie.id)}>Already seen!</button>
+                            <button className="card-button" style={{backgroundColor: 'coral'}} onClick={() => handleSeenTVList(oneMovie.id)}>Add to: "Already seen!"</button>
                         </div>
                     </div>
                     }
 
 
-                    {getUser.myLists[0] &&
+                    {user.myLists[0] &&
                         <div>
-                            <button className="card-button" onClick={() => handleToCustomListONE(oneMovie.title)}>My list one</button>
+                            <button className="card-button" style={{backgroundColor: '#a566ab'}} onClick={() => handleToCustomListONE(oneMovie.title)}>{listONE.listName} ({listONE.TMDBids.length} items)</button>
                         </div>                    
                     }
 
-                    {getUser.myLists[1] &&
+                    {user.myLists[1] &&
                         <div>
-                            <button className="card-button" onClick={() => handleToCustomListTWO(oneMovie.title)}>My list two</button>
+                            <button className="card-button" style={{backgroundColor: '#6667ab'}} onClick={() => handleToCustomListTWO(oneMovie.title)}>{listTWO.listName} ({listONE.TMDBids.length} items)</button>
                         </div>                    
                     }
 
-                    {getUser.myLists[2] &&
+                    {user.myLists[2] &&
                         <div>
-                            <button className="card-button" onClick={() => handleToCustomListTHREE(oneMovie.title)}>My list three</button>
+                            <button className="card-button" style={{backgroundColor: '#66ab71'}} onClick={() => handleToCustomListTHREE(oneMovie.title)}>{listTHREE.listName} ({listONE.TMDBids.length} items)</button>
                         </div>                    
                     }
                         

@@ -14,7 +14,7 @@ import { addToCustomListONE, addToCustomListTHREE, addToCustomListTWO, getListON
 
 function TVDetailsPage(props) {
 
-    const { isLoggedIn, user } = useContext(AuthContext)
+    const { isLoggedIn, user, updateUser } = useContext(AuthContext)
 
     const { TMDB_id } = useParams()
     const [oneTV, setOneTV] = useState()
@@ -117,8 +117,8 @@ function TVDetailsPage(props) {
                 <Link to="/tv">
                     <Button variant="dark" size="m" style={{width: '150px', height: '60px', margin: '10px', marginLeft: '40px'}}>Back to TV Series</Button>
                 </Link>
-                <Carousel variant="dark">
-                    <Carousel.Item>
+                <Carousel variant="dark" fade>
+                    <Carousel.Item interval={5000}>
                         <img
                         className="detail-movie-cover"
                         src={IMG_API + oneTV.poster_path}
@@ -129,7 +129,7 @@ function TVDetailsPage(props) {
                         </Carousel.Caption>
                     </Carousel.Item>
                     {oneTV.backdrop_path &&
-                    <Carousel.Item>
+                    <Carousel.Item interval={5000}>
                         <img
                         className="detail-movie-cover"
                         src={IMG_API + oneTV.backdrop_path}
@@ -150,46 +150,44 @@ function TVDetailsPage(props) {
                     <h4 className="tagline">{oneTV.tagline}</h4>
                     {/* <p className="description">Created by: {oneTV.created_by[0].name}/p> */}
                     <p className="description">{oneTV.overview}</p>
-                    <p className="description">It has a total of {oneTV.number_of_seasons} seasons, with {oneTV.number_of_episodes} episodes for each season, and a duration of {oneTV.episode_run_time.slice(0, 1)} minutes each episode.</p>
+                    <p className="description">It has a total of {oneTV.number_of_seasons} seasons, with a total of {oneTV.number_of_episodes} episodes, and a duration of {oneTV.episode_run_time.slice(0, 1)} minutes each episode.</p>
+                {oneTV.first_air_date &&
+                    <p className="description" style={{marginTop: '-15px'}}>The first episode was released on {oneTV.first_air_date}, and the last one on {oneTV.last_episode_to_air.air_date}.</p>}
                 {oneTV.networks.name &&
-                    <p className="description" style={{marginTop: '-15px'}}>The first episode was released on {oneTV.first_air_date}, and the last one on {oneTV.last_episode_to_air.air_date}. You can watch it at {oneTV.networks[0].name}.</p>}
+                    <p className="description" style={{marginTop: '-15px'}}>You can watch it at {oneTV.networks[0].name}.</p>}
+
                     <p className="description">Rating: {oneTV.vote_average}/10 ({oneTV.vote_count} votes)</p>
-                {/* {oneTV.production_companies[0].logo_path &&    
-                    <p className="description">
-                        <img className="company-logo" src={IMG_API + oneTV.production_companies[0].logo_path} alt={oneTV.title}/>
-                    </p>
-                }     */}
 
                 {isLoggedIn &&
                     <div>
                         <div>
-                            <button className="card-button" onClick={() => handleToSeeTVList(oneTV.id)}>Add to TV Series to see list</button>
+                            <button className="card-button" onClick={() => handleToSeeTVList(oneTV.id)}>Add to: To see list</button>
                         </div>
                         <div>
-                            <button className="card-button" style={{backgroundColor: 'coral'}} onClick={() => handleSeenTVList(oneTV.id)}>Already seen!</button>
+                            <button className="card-button" style={{backgroundColor: 'coral'}} onClick={() => handleSeenTVList(oneTV.id)}>Add to: "Already seen!"</button>
                         </div>
                     </div>
                 }
 
                 {user.myLists[0] &&
                     <div>
-                        <button className="card-button" onClick={() => handleToCustomListONE(oneTV.id)}>{listONE.listName}</button>
+                        <button className="card-button" style={{backgroundColor: '#a566ab'}} onClick={() => handleToCustomListONE(oneTV.id)}>{listONE.listName} ({listONE.TMDBids.length} items)</button>
                     </div>                    
                     }
 
                 {user.myLists[1] &&
                     <div>
-                        <button className="card-button" onClick={() => handleToCustomListTWO(oneTV.id)}>{listTWO.listName}</button>
+                        <button className="card-button" style={{backgroundColor: '#6667ab'}} onClick={() => handleToCustomListTWO(oneTV.id)}>{listTWO.listName} ({listTWO.TMDBids.length} items)</button>
                     </div>                    
                     }
 
                 {user.myLists[2] &&
                     <div>
-                        <button className="card-button" onClick={() => handleToCustomListTHREE(oneTV.id)}>{listTHREE.listName}</button>
+                        <button className="card-button" style={{backgroundColor: '#66ab71'}} onClick={() => handleToCustomListTHREE(oneTV.id)}>{listTHREE.listName} ({listTHREE.TMDBids.length} items)</button>
                     </div>                    
                     }
                     
-                    <a className="description" href={oneTV.homepage} target="_blank" rel="noreferrer noopener">TV Serie Homepage</a>
+                    <a className="link_home" href={oneTV.homepage} target="_blank" rel="noreferrer noopener">Serie Homepage</a>
 
                     <div className='cast-container'>
                         <p className='cast-text'>Most relevant actors:</p>

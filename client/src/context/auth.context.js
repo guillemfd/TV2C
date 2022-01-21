@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { verify } from './../services/auth.service'
+import { useNavigate } from 'react-router-dom'
+
 // const API_URL = "http://localhost:5005";
 
 const AuthContext = React.createContext();
@@ -8,6 +10,8 @@ function AuthProviderWrapper(props) {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [user, setUser] = useState(JSON.parse(localStorage.getItem('user')) || null);
+  const navigate = useNavigate()
+
 
   const updateUser = (user) => {
     localStorage.setItem('user', JSON.stringify(user))
@@ -55,6 +59,7 @@ function AuthProviderWrapper(props) {
     // Update the state variables
     setIsLoggedIn(false);
     updateUser(null);
+    navigate('/')
   }  
 
 

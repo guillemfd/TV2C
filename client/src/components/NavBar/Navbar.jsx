@@ -2,7 +2,7 @@ import './NavBar.css'
 import { Navbar, Nav, Container, NavLink, NavDropdown, Form, FormControl, Button} from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import { useContext } from 'react'
-import { AuthContext, verifyStoredToken } from '../../context/auth.context'
+import { AuthContext } from '../../context/auth.context'
 import { useEffect, useState } from "react"
 // import { getUserData } from '../../services/auth.service'
 import { getListONE } from "../../services/movies.service"
@@ -17,14 +17,45 @@ function NavBar() {
     const [listTWO, setListTWO] = useState([])
     const [listTHREE, setListTHREE] = useState([])
 
-    useEffect(() => {
-        return () => {
-            console.log("cleaned up");
-          };
-    }, [user])
+    // useEffect(() => {
+    //     return () => {
+    //         console.log("cleaned up");
+    //       };
+    // }, [user])
 
-console.log("user data @ NavBar-->")
-console.log(user)
+
+useEffect(() => {
+    if ( user) {
+    getListONE(user.myLists[0])
+        .then(response => { 
+            setListONE(response.data)
+            // setIsLoading(false)
+        })
+        .catch(error => console.log(error))
+    }
+}, [user])
+
+useEffect(() => {
+    if ( user) {
+    getListONE(user.myLists[1])
+        .then(response => { 
+            setListTWO(response.data)
+            // setIsLoading(false)
+        })
+        .catch(error => console.log(error))
+    }
+}, [user])
+
+useEffect(() => {
+    if ( user) {
+    getListONE(user.myLists[2])
+        .then(response => { 
+            setListTHREE(response.data)
+            // setIsLoading(false)
+        })
+        .catch(error => console.log(error)) 
+    }
+}, [user])
 
     // const [getUser, setGetUser] = useState()
 
@@ -155,10 +186,10 @@ console.log(user)
                                     <span className='dropdown-item' style={{textAlign: 'left', fontWeight: 'bold'}}>Default Lists</span>
                                 </NavDropdown.Item>
                                 <NavDropdown.Item >
-                                    <Link to="/myLists/ListToSeeTV" className='dropdown-item'>Wish List</Link>
+                                    <Link to="/myLists/ListToSeeTV" style={{backgroundColor: '#3a86b8'}} className='dropdown-item'>To Watch List</Link>
                                 </NavDropdown.Item>
                                 <NavDropdown.Item >
-                                    <Link to="/mostPopular" className='dropdown-item'>Already Seen</Link>
+                                    <Link to="/myLists/AlreadyWatched" style={{backgroundColor: 'coral'}} className='dropdown-item'>Already Watched!</Link>
                                 </NavDropdown.Item>
                                             <NavDropdown.Divider />                            
                                 
@@ -168,18 +199,18 @@ console.log(user)
                             {user.myLists[0] &&
                                 <div> 
                                 <NavDropdown.Item >
-                                    <Link to={`/myLists/${user.myLists[0]}`} className='dropdown-item'>List 1{listONE.listName}</Link>
+                                    <Link to={`/myLists/${user.myLists[0]}`} style={{backgroundColor: '#a566ab'}} className='dropdown-item'>{listONE.listName}</Link>
                                 </NavDropdown.Item>
                                 </div>
                             }
                             {user.myLists[1] &&
                                 <NavDropdown.Item >
-                                    <Link to={`/myLists/${user.myLists[1]}`} className='dropdown-item'>List 2</Link>
+                                    <Link to={`/myLists/${user.myLists[1]}`} style={{backgroundColor: '#6667ab'}} className='dropdown-item'>{listTWO.listName}</Link>
                                 </NavDropdown.Item>
                             }
                             {user.myLists[2] &&
                                 <NavDropdown.Item >
-                                    <Link to={`/myLists/${user.myLists[2]}`} className='dropdown-item'>List 3</Link>
+                                    <Link to={`/myLists/${user.myLists[2]}`} style={{backgroundColor: '#66ab71'}} className='dropdown-item'>{listTHREE.listName}</Link>
                                 </NavDropdown.Item>
                             }
                             </NavDropdown>

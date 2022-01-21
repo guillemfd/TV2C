@@ -218,12 +218,30 @@ router.post("/toSeeTVList/:id", async (req, res) => {
   // console.log(req.body)
 
     try{
-        await User.findByIdAndUpdate(req.body.userId, {$push: {toseeTVList: req.params.id}},);
-        res.status(204).json()
+        const TVtoSee = await User.findByIdAndUpdate(req.body.userId, 
+          {$push: {toseeTVList: req.params.id}}, {new : true});
+        res.status(201).json({ TVtoSee })
     }catch(err){
       console.log(err.message)
     }
 });
+
+
+
+// const { listName, publishedBy, publishedUsername } = req.body
+
+// try {
+//   const createList = await List.create({ listName, publishedBy, publishedUsername })
+
+//   const user = await User.findByIdAndUpdate(publishedBy, 
+//     {$push: {myLists: createList._id}}, {new : true})
+
+//    res.status(201).json({createList, user})
+// } catch (err) {
+//     res.status(400).json(err.message)
+// }
+
+
 
 
 //---------- MOVIE TO SEE -----------------------------------------------------------------------
