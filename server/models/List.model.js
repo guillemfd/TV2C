@@ -5,6 +5,7 @@ const listSchema = new Schema(
     publishedBy: { type: Schema.Types.ObjectId, ref: "User" },
     publishedUsername: { type: String },
     listName: { type: String, required: [true, "Please, give a name to the list!"] },
+    description: { type: String },
     TMDBids: [String],
   },
   { timestamps: true }

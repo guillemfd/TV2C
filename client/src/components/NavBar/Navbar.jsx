@@ -4,13 +4,18 @@ import { Link } from 'react-router-dom'
 import { useContext } from 'react'
 import { AuthContext, verifyStoredToken } from '../../context/auth.context'
 import { useEffect, useState } from "react"
-import { getUserData } from '../../services/auth.service'
+// import { getUserData } from '../../services/auth.service'
+import { getListONE } from "../../services/movies.service"
+
 
 
 
 function NavBar() {
 
     const { isLoggedIn, user, logOutUser } = useContext(AuthContext)
+    const [listONE, setListONE] = useState([])
+    const [listTWO, setListTWO] = useState([])
+    const [listTHREE, setListTHREE] = useState([])
 
     useEffect(() => {
         return () => {
@@ -34,6 +39,39 @@ function NavBar() {
 
     // console.log('HOLA getUser')
     // console.log(getUser)
+
+// ---------- ESTO SOLO FUNCIONA UNA VEZ CARGADO EL USUARIO ------------------------------
+    // useEffect(() => {
+    //     if (user.myLists[0]){
+    //         getListONE(user.myLists[0])
+    //             .then(response => { 
+    //                 setListONE(response.data)
+    //                 // setIsLoading(false)
+    //             })
+    //             .catch(error => console.log(error))
+    //     }
+    // }, [user])
+
+    // useEffect(() => {
+    //     getListONE(user.myLists[1])
+    //         .then(response => { 
+    //             setListTWO(response.data)
+    //             // setIsLoading(false)
+    //         })
+    //         .catch(error => console.log(error))
+    // }, [user])
+
+    // useEffect(() => {
+    //     getListONE(user.myLists[2])
+    //         .then(response => { 
+    //             setListTHREE(response.data)
+    //             // setIsLoading(false)
+    //         })
+    //         .catch(error => console.log(error)) 
+    // }, [user])
+// ---------- ESTO SOLO FUNCIONA UNA VEZ CARGADO EL USUARIO ------------------------------
+
+
 
 
     return (
@@ -128,7 +166,7 @@ function NavBar() {
                             {user.myLists[0] &&
                                 <div> 
                                 <NavDropdown.Item >
-                                    <Link to={`/myLists/${user.myLists[0]}`} className='dropdown-item'>List 1</Link>
+                                    <Link to={`/myLists/${user.myLists[0]}`} className='dropdown-item'>List 1{listONE.listName}</Link>
                                 </NavDropdown.Item>
                                 </div>
                             }

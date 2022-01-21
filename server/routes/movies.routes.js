@@ -227,10 +227,10 @@ router.post("/toSeeTVList/:id", async (req, res) => {
 
 
 //---------- MOVIE TO SEE -----------------------------------------------------------------------
-router.post("/toSeeMovieList/:id", async (req, res) => { 
+router.post("/toSeeMovieList/:name", async (req, res) => { 
 
     try{
-        await User.findByIdAndUpdate(req.body.userId, {$push: {toseeMovieList: req.params.id}},);
+        await User.findByIdAndUpdate(req.body.userId, {$push: {toseeMovieList: req.params.name}},);
         res.status(204).json()
     }catch(err){
       console.log(err.message)
@@ -239,12 +239,11 @@ router.post("/toSeeMovieList/:id", async (req, res) => {
 
 
 //---------- MOVIE SEEN -----------------------------------------------------------------------
-router.post("/seenMovieList/:id", async (req, res) => { 
+router.post("/seenMovieList/:name", async (req, res) => { 
   console.log(req.body.userId)
 
-
   try{
-      await User.findByIdAndUpdate(req.body.userId, {$push: {seenMovieList: req.params.id}},);
+      await User.findByIdAndUpdate(req.body.userId, {$push: {seenMovieList: req.params.name}},);
       // await User.findByIdAndUpdate(req.body.userId, {$pull: {toseeMovieList: req.params.id}},);
       res.status(204).json()
   }catch(err){
@@ -252,10 +251,10 @@ router.post("/seenMovieList/:id", async (req, res) => {
   }
 });
 
-router.patch("/deleteMovieWatched/:id", async (req, res) => { 
-  console.log(req.params.id)
+router.patch("/deleteMovieWatched/:name", async (req, res) => { 
+
   try{
-      await User.findByIdAndUpdate(req.body.userId, {$pull: {toseeMovieList: req.params.id}},);
+      await User.findByIdAndUpdate(req.body.userId, {$pull: {toseeMovieList: req.params.name}},);
       res.status(204).json()
   }catch(err){
     console.log(err.message)
@@ -264,12 +263,10 @@ router.patch("/deleteMovieWatched/:id", async (req, res) => {
 
 
 //---------- TV SEEN -----------------------------------------------------------------------
-router.post("/seenTVList/:id", async (req, res) => { 
-  console.log(req.body.userId)
-
+router.post("/seenTVList/:name", async (req, res) => { 
 
   try{
-      await User.findByIdAndUpdate(req.body.userId, {$push: {seenTVList: req.params.id}},);
+      await User.findByIdAndUpdate(req.body.userId, {$push: {seenTVList: req.params.name}},);
       // await User.findByIdAndUpdate(req.body.userId, {$pull: {toseeMovieList: req.params.id}},);
       res.status(204).json()
   }catch(err){
@@ -277,10 +274,10 @@ router.post("/seenTVList/:id", async (req, res) => {
   }
 });
 
-router.patch("/deleteTVWatched/:id", async (req, res) => { 
+router.patch("/deleteTVWatched/:name", async (req, res) => { 
   console.log(req.params.id)
   try{
-      await User.findByIdAndUpdate(req.body.userId, {$pull: {toseeTVList: req.params.id}},);
+      await User.findByIdAndUpdate(req.body.userId, {$pull: {toseeTVList: req.params.name}},);
       res.status(204).json()
   }catch(err){
     console.log(err.message)

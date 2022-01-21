@@ -51,26 +51,26 @@ function MovieDetailsPage(props) {
         return rhours + "h " + rminutes + "m";
       };
 
-      const handleToSeeMovieList = () => {
-        toSeeMovieList (oneMovie.id, user._id)
+    const handleToSeeMovieList = () => {
+        toSeeMovieList (oneMovie.title, user._id)
     }
 
     const handleSeenMovieList = () => {
-        deleteMovieWatched (oneMovie.id, user._id)
-        seenMovieList (oneMovie.id, user._id)
+        deleteMovieWatched (oneMovie.title, user._id)
+        seenMovieList (oneMovie.title, user._id)
     }
 
 
     const handleToCustomListONE = () => {
-        addToCustomListONE (oneMovie.id, getUser.myLists[0])
+        addToCustomListONE (oneMovie.title, getUser.myLists[0])
     }
 
     const handleToCustomListTWO = () => {
-        addToCustomListTWO (oneMovie.id, getUser.myLists[1])
+        addToCustomListTWO (oneMovie.title, getUser.myLists[1])
     }
 
     const handleToCustomListTHREE = () => {
-        addToCustomListTHREE (oneMovie.id, getUser.myLists[2])
+        addToCustomListTHREE (oneMovie.title, getUser.myLists[2])
     }
 
     return (
@@ -140,19 +140,19 @@ function MovieDetailsPage(props) {
 
                     {getUser.myLists[0] &&
                         <div>
-                            <button className="card-button" onClick={() => handleToCustomListONE(oneMovie.id)}>My list one</button>
+                            <button className="card-button" onClick={() => handleToCustomListONE(oneMovie.title)}>My list one</button>
                         </div>                    
                     }
 
                     {getUser.myLists[1] &&
                         <div>
-                            <button className="card-button" onClick={() => handleToCustomListTWO(oneMovie.id)}>My list two</button>
+                            <button className="card-button" onClick={() => handleToCustomListTWO(oneMovie.title)}>My list two</button>
                         </div>                    
                     }
 
                     {getUser.myLists[2] &&
                         <div>
-                            <button className="card-button" onClick={() => handleToCustomListTHREE(oneMovie.id)}>My list three</button>
+                            <button className="card-button" onClick={() => handleToCustomListTHREE(oneMovie.title)}>My list three</button>
                         </div>                    
                     }
                         

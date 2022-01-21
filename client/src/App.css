@@ -1,3 +1,40 @@
 body {
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
+
+.table {
+    margin: 1em 0;
+    min-width: 300px;
+    border: 1px solid #ddd;
+}
+
+.table th {
+    color: white;
+}
+
+.table-tr {
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+}
+
+
+
+
+th, td {
+    text-align: left;
+    
+    @media (min-width: $breakpoint-alpha) {
+        display: table-cell;
+        padding: .25em .5em;
+        
+        &:first-child {
+        padding-left: 0;
+        }
+        
+        &:last-child {
+        padding-right: 0;
+        }
+    }
+}
+      
+      

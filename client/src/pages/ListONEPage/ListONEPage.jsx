@@ -37,11 +37,10 @@ function ListONEPage(props) {
             .catch(error => console.log(error))     
     }, [])
     
-    console.log('aquí van los IDS')
+
     console.log('SOY LISTonepAGE')
     console.log(listONE)
-    console.log('eeeeeeeeeeooooooooooooo')
-
+    
     console.log(listONE.listName)
     console.log(listONE.TMDBids)
 
@@ -57,20 +56,34 @@ function ListONEPage(props) {
             <h1 style={{color: 'white'}}>This is your list: "{listONE.listName}"</h1>
             <h2 style={{color: 'white'}}>It was created on {listONE.createdAt.slice(0, 10)}, and now it has a total of {listONE.TMDBids.length} elements.</h2>
             <h1 style={{color: 'white'}}>{listONE.TMDBids[0]}</h1>
-            <div className="cards_at_Movies_Pages">
-                {listONE.TMDBids.map((id, i) => {
+            <table className="table">
+                <tr className="table-tr">
+                    <th>Movie Title</th>
+                </tr>
+                {listONE.TMDBids.map((name, i) => {
                 return (
-                    <h1 style={{color: 'white'}} key={i}>{id} popi</h1>
+                    <tr className="table-tr">
+                        <td style={{color: 'white'}} key={i}>{name}</td>
+                    </tr>
                  )})}
-            </div>
-
-            {/* <hr/>
-
-            <div className="cards_at_Movies_Pages">
-                {popularTV.map((tv) => <TVCard {...tv} key={tv.id} />)}
-            </div> */}
+            </table>
         </Container>
     )
 }
+
+{/* <table class="rwd-table">
+<tr>
+    <th>Movie Title</th>
+</tr>
+<tr>
+{listONE.TMDBids.map((name, i) => {
+return (
+    <td data-th="Movie Title" key={i}>{name}</td>
+)})}
+</tr>
+ 
+</table> */}
+
+
 
 export default ListONEPage

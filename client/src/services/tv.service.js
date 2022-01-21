@@ -36,14 +36,14 @@ export function getSearch(query) {
     return TVService.get(`/${query}`)
 }
 
-export function toSeeTVList(id, userId) {
-    return TVService.post(`toSeeTVList/${id}`, {userId})
+export function toSeeTVList(name, userId) {
+    return TVService.post(`toSeeTVList/${name}`, {userId})
 }
 
-export function seenTVList(id, userId) {
-    return TVService.post(`seenTVList/${id}`, {userId})
+export function seenTVList(name, userId) {
+    return TVService.post(`seenTVList/${name}`, {userId})
 }
 
-export function deleteTVWatched(id, userId) {
-    return TVService.patch(`deleteTVWatched/${id}`, {userId})
+export function deleteTVWatched(name, userId) {
+    return TVService.patch(`deleteTVWatched/${name}`, {userId})
 }

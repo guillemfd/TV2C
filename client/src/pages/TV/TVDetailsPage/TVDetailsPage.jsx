@@ -24,8 +24,6 @@ function TVDetailsPage(props) {
     const [listTWO, setListTWO] = useState([])
     const [listTHREE, setListTHREE] = useState([])
 
-
-
     const IMG_API = "https://image.tmdb.org/t/p/w1280"
 
 
@@ -81,24 +79,24 @@ function TVDetailsPage(props) {
 
 
     const handleToSeeTVList = () => {
-        toSeeTVList (oneTV.id, user._id)
+        toSeeTVList (oneTV.name, user._id)
     }
 
     const handleSeenTVList = () => {
-        deleteTVWatched (oneTV.id, user._id)
-        seenTVList (oneTV.id, user._id)
+        deleteTVWatched (oneTV.name, user._id)
+        seenTVList (oneTV.name, user._id)
     }
 
     const handleToCustomListONE = () => {
-        addToCustomListONE (oneTV.id, user.myLists[0])
+        addToCustomListONE (oneTV.name, user.myLists[0])
     }
 
     const handleToCustomListTWO = () => {
-        addToCustomListTWO (oneTV.id, user.myLists[1])
+        addToCustomListTWO (oneTV.name, user.myLists[1])
     }
 
     const handleToCustomListTHREE = () => {
-        addToCustomListTHREE (oneTV.id, user.myLists[2])
+        addToCustomListTHREE (oneTV.name, user.myLists[2])
     }
 
 
@@ -181,13 +179,13 @@ function TVDetailsPage(props) {
 
                 {user.myLists[1] &&
                     <div>
-                        <button className="card-button" onClick={() => handleToCustomListTWO(oneTV.id)}>My list two</button>
+                        <button className="card-button" onClick={() => handleToCustomListTWO(oneTV.id)}>{listTWO.listName}</button>
                     </div>                    
                     }
 
                 {user.myLists[2] &&
                     <div>
-                        <button className="card-button" onClick={() => handleToCustomListTHREE(oneTV.id)}>My list three</button>
+                        <button className="card-button" onClick={() => handleToCustomListTHREE(oneTV.id)}>{listTHREE.listName}</button>
                     </div>                    
                     }
                     
