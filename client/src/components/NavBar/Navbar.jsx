@@ -23,6 +23,8 @@ function NavBar() {
           };
     }, [user])
 
+console.log("user data @ NavBar-->")
+console.log(user)
 
     // const [getUser, setGetUser] = useState()
 
@@ -153,7 +155,7 @@ function NavBar() {
                                     <span className='dropdown-item' style={{textAlign: 'left', fontWeight: 'bold'}}>Default Lists</span>
                                 </NavDropdown.Item>
                                 <NavDropdown.Item >
-                                    <Link to="/mostPopular" className='dropdown-item'>Wish List</Link>
+                                    <Link to="/myLists/ListToSeeTV" className='dropdown-item'>Wish List</Link>
                                 </NavDropdown.Item>
                                 <NavDropdown.Item >
                                     <Link to="/mostPopular" className='dropdown-item'>Already Seen</Link>

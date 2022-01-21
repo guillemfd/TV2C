@@ -2,11 +2,20 @@ import { Container, Button } from "react-bootstrap"
 import { Link } from 'react-router-dom'
 import MoviesSearchBar from "../../components/Movies/MoviesSearchBar/MoviesSearchBar"
 import TVSearchBar from "../../components/TV/TVSearchBar/TVSearchBar"
-
+import NewListForm from "../../components/NewListForm/NewListForm"
 import BackGroundIMG from '../../img/photo-1489599849927-2ee91cede3ba.jpg'
 import './HomePage.css'
+import { useContext } from 'react'
+import { AuthContext } from '../../context/auth.context'
+
+
+
 
 function HomePage() {
+
+    const { isLoggedIn, user, logOutUser } = useContext(AuthContext)
+
+
     return (
         <Container>
             <div id="HomePageBackGround">
@@ -16,17 +25,13 @@ function HomePage() {
             <h5 className="Page_Subtitle">Make personalised lists, update your "To See" list or just look for new movies & TV Series</h5>
             <hr/>
 
+         {isLoggedIn &&
+            <NewListForm />
+
+         }   
             <MoviesSearchBar />
             <TVSearchBar />
 
-            {/* <Link to="/movies">
-                <Button variant="dark" size="xl">Suggested Movies</Button>
-            </Link> */}
-
-            {/* <TVSearchBar />
-            <Link to="/tv">
-                <Button variant="light" size="xl">Suggested TV Series</Button>
-            </Link> */}
         </Container>
     )
 }

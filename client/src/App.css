@@ -3,38 +3,22 @@ body {
 }
 
 .table {
+    background-color: cadetblue;
     margin: 1em 0;
     min-width: 300px;
-    border: 1px solid #ddd;
+    max-width: 50%;
+    border-radius: 20px;
 }
 
 .table th {
     color: white;
+    padding: 5px 25px;
+    font-size: 20px;
 }
 
-.table-tr {
-    border-top: 1px solid #ddd;
-    border-bottom: 1px solid #ddd;
-}
-
-
-
-
-th, td {
-    text-align: left;
-    
-    @media (min-width: $breakpoint-alpha) {
-        display: table-cell;
-        padding: .25em .5em;
-        
-        &:first-child {
-        padding-left: 0;
-        }
-        
-        &:last-child {
-        padding-right: 0;
-        }
-    }
+.table td {
+    color: white;
+    padding: 5px 25px;
 }
       
       

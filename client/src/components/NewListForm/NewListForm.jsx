@@ -7,8 +7,7 @@ import { AuthContext } from '../../context/auth.context'
 
 function NewListForm(props) {
 
-    const { user } = useContext(AuthContext)
-    console.log(user._id)
+    const { user, updateUser } = useContext(AuthContext)
 
     const [listForm, setListForm] = useState({ 
         listName: '',
@@ -25,13 +24,14 @@ function NewListForm(props) {
     const handleSubmit = e => {
         e.preventDefault()
         saveList(listForm)
-            .then(response => console.log(response.data))
+            .then(response => {
+                updateUser(response.data.user)
+            })
             .catch(err => console.log(err))
     }
 
     return (
         <Form onSubmit={handleSubmit}>
-        <div className="help-block" style={{margin: '0px 0px 15px 57px', fontSize: '17px'}}>Give a name to your new list:</div>
         <InputGroup className="mb-3">
             <InputGroup.Text id="basic-addon1">🎬</InputGroup.Text>
             <FormControl
@@ -43,11 +43,14 @@ function NewListForm(props) {
             placeholder="e.g. 'Mom's Recommendations'"
             aria-describedby="basic-addon1"
             />
-        </InputGroup>
-
         <div className="form-group justify-content-center">
-            <Button type="submit" className="btn btn-primary" style={{width: '75%'}}>Submit</Button>
+            <Button variant="info" type="submit" className="btn btn-primary">Create New List</Button>
         </div>
+        </InputGroup>
+        <div className="help-block" style={{margin: '-15px 0px 0px 57px', fontSize: '14px', color: 'white'}}>Give a name to your new list</div>
+
+
+
 
     </Form>
     )

@@ -7,15 +7,12 @@ import MoviesBestsXXIHor from "../../../components/Movies/MoviesBestsXXIHor/Movi
 import MovieShorterThan90Hor from "../../../components/Movies/MovieShorterThan90Hor/MovieShorterThan90Hor"
 import MoviesInCinemaHor from "../../../components/Movies/MoviesInCinemaHor/MoviesInCinemaHor"
 import PopularMoviesHor from "../../../components/Movies/PopularMoviesHor/PopularMoviesHor"
-import NewListForm from "../../../components/NewListForm/NewListForm"
 
 
 function MoviesHomePage() {
 
     return (
         <Container>
-
-            <NewListForm />
 
             <h1 className="Page_Title">Select a list</h1>
             <hr/>

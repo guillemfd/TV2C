@@ -292,9 +292,10 @@ router.post("/createList", async (req, res, next) => {
   try {
     const createList = await List.create({ listName, publishedBy, publishedUsername })
 
-    await User.findByIdAndUpdate(publishedBy, 
-      {$push: {myLists: createList._id}},)
-      res.status(201).json(createList)
+    const user = await User.findByIdAndUpdate(publishedBy, 
+      {$push: {myLists: createList._id}}, {new : true})
+
+     res.status(201).json({createList, user})
   } catch (err) {
       res.status(400).json(err.message)
   }

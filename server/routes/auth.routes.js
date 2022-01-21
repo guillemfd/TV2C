@@ -56,10 +56,10 @@ User
     .then((createdUser) => {
     // Deconstruct the newly created user object to omit the password
     // We should never expose passwords publicly
-    const { email, username, _id, myLists, toseeTVList, seenTVList, toseeMovieList, seenMovieList  } = createdUser;
+    const { email, username, _id, myLists, toseeTVList, seenTVList, toseeMovieList, seenMovieList, createdAt  } = createdUser;
     
     // Create a new object that doesn't expose the password
-    const user = { email, username, _id, myLists, toseeTVList, seenTVList, toseeMovieList, seenMovieList  };
+    const user = { email, username, _id, myLists, toseeTVList, seenTVList, toseeMovieList, seenMovieList, createdAt };
 
     // Send a json response containing the user object
     res.status(201).json({ user: user });
@@ -74,7 +74,7 @@ User
 
 // POST  /auth/login - Verifies email and password and returns a JWT --------------------------------------------
 router.post('/login', (req, res, next) => {
-    const { username, password, email, myLists, toseeTVList, seenTVList, toseeMovieList, seenMovieList  } = req.body;
+    const { username, password } = req.body;
   
     // Check if email or password are provided as empty string 
     if (username === '' || password === '') {
@@ -98,10 +98,10 @@ router.post('/login', (req, res, next) => {
     
             if (passwordCorrect) {
             // Deconstruct the user object to omit the password
-            const { _id, username, email, myLists, toseeTVList, seenTVList, toseeMovieList, seenMovieList  } = foundUser;
+            const { _id, username, email, myLists, toseeTVList, seenTVList, toseeMovieList, seenMovieList, createdAt  } = foundUser;
             
             // Create an object that will be set as the token payload. This is the data that will be sent to the front.
-            const payload = { _id, username, email, myLists, toseeTVList, seenTVList, toseeMovieList, seenMovieList  };
+            const payload = { _id, username, email, myLists, toseeTVList, seenTVList, toseeMovieList, seenMovieList, createdAt  };
     
             // Create and sign the token
             const authToken = jwt.sign( 
