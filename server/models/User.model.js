@@ -12,8 +12,10 @@ const userSchema = new Schema(
       match: [/\S+@\S+\.\S+/, "Email not valid"]
     },
     myLists: [{ type: Schema.Types.ObjectId, ref: "List" }],
-    toseeList: [String],
-    seenList: [String],
+    toseeTVList: [String],
+    seenTVList: [String],
+    toseeMovieList: [String],
+    seenMovieList: [String],
   },
   { timestamps: true }
 );

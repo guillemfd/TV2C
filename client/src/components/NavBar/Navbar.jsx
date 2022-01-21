@@ -107,26 +107,27 @@ function NavBar() {
                                     <Link to="/mostPopular" className='dropdown-item'>Already Seen</Link>
                                 </NavDropdown.Item>
                                             <NavDropdown.Divider />
-                            {/* {getUser.myLists[0] && 
+                            {/* {getUser.myLists[0] &&  */}
+                            {getUser&& 
                                 <div>
                                 <NavDropdown.Item >
                                     <span className='dropdown-item' style={{textAlign: 'left', fontWeight: 'bold'}}>Custom Lists</span>
                                 </NavDropdown.Item>
                                 <NavDropdown.Item >
-                                    <Link to={`/myLists/${getUser.myLists[0]}`} className='dropdown-item'>List 1 "{getUser.myLists[0]}"</Link>
+                                    <Link to={`/myLists/${getUser.myLists[0]}`} className='dropdown-item'>List 1</Link>
                                 </NavDropdown.Item>
                                 </div>
                             }
-                            {getUser.myLists[1] &&
+                            {getUser &&
                                 <NavDropdown.Item >
-                                    <Link to="/myListTWO" className='dropdown-item'>List 2 "{getUser.myLists[1]}"</Link>
+                                    <Link to={`/myLists/${getUser.myLists[1]}`} className='dropdown-item'>List 2</Link>
                                 </NavDropdown.Item>
                             }
-                            {getUser.myLists[2] &&
+                            {getUser &&
                                 <NavDropdown.Item >
-                                    <Link to="/myListTHREE" className='dropdown-item'>List 3 "{getUser.myLists[2]}"</Link>
+                                    <Link to={`/myLists/${getUser.myLists[2]}`} className='dropdown-item'>List 3</Link>
                                 </NavDropdown.Item>
-                            } */}
+                            }
                             </NavDropdown>
 
 

@@ -55,3 +55,19 @@ export function addToCustomListTHREE(id, listId) {
 export function getListONE(listId) {
     return moviesService.get(`getListONE/${listId}`)
 }
+
+export function getIdsListONE(listId) {
+    return moviesService.get(`getIdsListONE/${listId}`)
+}
+
+export function toSeeMovieList(id, userId) {
+    return moviesService.post(`toseeMovieList/${id}`, {userId})
+}
+
+export function seenMovieList(id, userId) {
+    return moviesService.post(`seenMovieList/${id}`, {userId})
+}
+
+export function deleteMovieWatched(id, userId) {
+    return moviesService.patch(`deleteMovieWatched/${id}`, {userId})
+}

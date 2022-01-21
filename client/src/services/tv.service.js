@@ -39,3 +39,11 @@ export function getSearch(query) {
 export function toSeeTVList(id, userId) {
     return TVService.post(`toSeeTVList/${id}`, {userId})
 }
+
+export function seenTVList(id, userId) {
+    return TVService.post(`seenTVList/${id}`, {userId})
+}
+
+export function deleteTVWatched(id, userId) {
+    return TVService.patch(`deleteTVWatched/${id}`, {userId})
+}

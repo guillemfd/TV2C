@@ -56,8 +56,6 @@ function AppRoutes() {
             <Route path="/tv/bestofsXXI" element={<TVBestsXXIPage />} />
             <Route path="/tv/bestofsXX" element={<TVBestsXXPage />} />
 
-
-
             <Route path="/*" element={<Page404 />} />
         </Routes>
     )

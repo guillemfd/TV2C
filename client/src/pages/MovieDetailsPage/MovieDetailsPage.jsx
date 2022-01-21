@@ -1,16 +1,24 @@
 import './MovieDetailsPage.css'
 import { useEffect, useState } from "react"
 import { useParams, Link } from "react-router-dom"
-import { getOneMovie } from "../../services/movies.service"
+import { addToCustomListONE, addToCustomListTHREE, addToCustomListTWO, deleteMovieWatched, getOneMovie, seenMovieList, toSeeMovieList } from "../../services/movies.service"
 import Spinner from "../../components/Spinner/Spinner"
 import {Carousel} from 'react-bootstrap'
+import { useContext } from 'react'
+import { AuthContext } from '../../context/auth.context'
+import { getUserData } from '../../services/auth.service'
+
 
 
 function MovieDetailsPage(props) {
 
+    const { isLoggedIn, user } = useContext(AuthContext)
+
     const { TMDB_id } = useParams()
     const [oneMovie, setOneMovie] = useState()
     const [isLoading, setIsLoading] = useState(true)
+    const [getUser, setGetUser] = useState()
+
     const IMG_API = "https://image.tmdb.org/t/p/w1280"
 
 
@@ -24,6 +32,17 @@ function MovieDetailsPage(props) {
             .catch(err => console.log(err))
     }, [])
 
+    useEffect(() => {
+        if ( user) {
+            getUserData(`${user._id}`)
+                .then(response => {
+                    setGetUser(response.data)
+                    // setIsLoading(false)
+                })
+                .catch(err => console.log(err))
+        }
+    }, [user])
+
     const convertRuntime = (num) => {
         let hours = num / 60;
         let rhours = Math.floor(hours);
@@ -31,6 +50,28 @@ function MovieDetailsPage(props) {
         let rminutes = Math.round(minutes);
         return rhours + "h " + rminutes + "m";
       };
+
+      const handleToSeeMovieList = () => {
+        toSeeMovieList (oneMovie.id, user._id)
+    }
+
+    const handleSeenMovieList = () => {
+        deleteMovieWatched (oneMovie.id, user._id)
+        seenMovieList (oneMovie.id, user._id)
+    }
+
+
+    const handleToCustomListONE = () => {
+        addToCustomListONE (oneMovie.id, getUser.myLists[0])
+    }
+
+    const handleToCustomListTWO = () => {
+        addToCustomListTWO (oneMovie.id, getUser.myLists[1])
+    }
+
+    const handleToCustomListTHREE = () => {
+        addToCustomListTHREE (oneMovie.id, getUser.myLists[2])
+    }
 
     return (
 
@@ -81,13 +122,37 @@ function MovieDetailsPage(props) {
                             </p>
                         }
 
-                        <Link to={`/mostPopular`}>
-                                <button className="card-button">Add to My List</button>
-                        </Link>
-                        <Link to={`/mostPopular`}>
-                                <button className="card-button">Already seen!</button>
-                        </Link>
 
+                    {isLoggedIn &&
+                    <div>
+                        <div>
+                            <button className="card-button" onClick={() => handleToSeeMovieList(oneMovie.id)}>Add to movies to see list</button>
+                        </div>
+                    
+                        <div>
+                            <button className="card-button" style={{backgroundColor: 'coral'}} onClick={() => handleSeenMovieList(oneMovie.id)}>Already seen!</button>
+                        </div>
+                    </div>
+                    }
+
+
+                    {getUser.myLists[0] &&
+                        <div>
+                            <button className="card-button" onClick={() => handleToCustomListONE(oneMovie.id)}>My list one</button>
+                        </div>                    
+                    }
+
+                    {getUser.myLists[1] &&
+                        <div>
+                            <button className="card-button" onClick={() => handleToCustomListTWO(oneMovie.id)}>My list two</button>
+                        </div>                    
+                    }
+
+                    {getUser.myLists[2] &&
+                        <div>
+                            <button className="card-button" onClick={() => handleToCustomListTHREE(oneMovie.id)}>My list three</button>
+                        </div>                    
+                    }
                         
                         <a className="link_home" href={oneMovie.homepage} target="_blank" rel="noreferrer noopener">Movie Homepage</a>
 

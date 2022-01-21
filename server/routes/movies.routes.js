@@ -212,19 +212,80 @@ router.get("/:query", async (req, res, next) => {
   }
 })
 
-//---------- TV TO SEE ------(.post   .get   .delete)-------------------------------------------------------------------------
+//---------- TV TO SEE -------------------------------------------------------------------------------
 router.post("/toSeeTVList/:id", async (req, res) => { 
   // console.log(req.params.id)
   // console.log(req.body)
 
     try{
-        await User.findByIdAndUpdate(req.body.userId, {$push: {toseeList: req.params.id}},);
+        await User.findByIdAndUpdate(req.body.userId, {$push: {toseeTVList: req.params.id}},);
         res.status(204).json()
     }catch(err){
       console.log(err.message)
     }
 });
 
+
+//---------- MOVIE TO SEE -----------------------------------------------------------------------
+router.post("/toSeeMovieList/:id", async (req, res) => { 
+
+    try{
+        await User.findByIdAndUpdate(req.body.userId, {$push: {toseeMovieList: req.params.id}},);
+        res.status(204).json()
+    }catch(err){
+      console.log(err.message)
+    }
+});
+
+
+//---------- MOVIE SEEN -----------------------------------------------------------------------
+router.post("/seenMovieList/:id", async (req, res) => { 
+  console.log(req.body.userId)
+
+
+  try{
+      await User.findByIdAndUpdate(req.body.userId, {$push: {seenMovieList: req.params.id}},);
+      // await User.findByIdAndUpdate(req.body.userId, {$pull: {toseeMovieList: req.params.id}},);
+      res.status(204).json()
+  }catch(err){
+    console.log(err.message)
+  }
+});
+
+router.patch("/deleteMovieWatched/:id", async (req, res) => { 
+  console.log(req.params.id)
+  try{
+      await User.findByIdAndUpdate(req.body.userId, {$pull: {toseeMovieList: req.params.id}},);
+      res.status(204).json()
+  }catch(err){
+    console.log(err.message)
+  }
+});
+
+
+//---------- TV SEEN -----------------------------------------------------------------------
+router.post("/seenTVList/:id", async (req, res) => { 
+  console.log(req.body.userId)
+
+
+  try{
+      await User.findByIdAndUpdate(req.body.userId, {$push: {seenTVList: req.params.id}},);
+      // await User.findByIdAndUpdate(req.body.userId, {$pull: {toseeMovieList: req.params.id}},);
+      res.status(204).json()
+  }catch(err){
+    console.log(err.message)
+  }
+});
+
+router.patch("/deleteTVWatched/:id", async (req, res) => { 
+  console.log(req.params.id)
+  try{
+      await User.findByIdAndUpdate(req.body.userId, {$pull: {toseeTVList: req.params.id}},);
+      res.status(204).json()
+  }catch(err){
+    console.log(err.message)
+  }
+});
 
 //--------------------- CREATE LIST -------------------------- CREATE LIST -------------------------- CREATE LIST -------
 router.post("/createList", async (req, res, next) => { 
@@ -299,8 +360,26 @@ console.log(req.params.listId)
       .catch(err => res.status(500).json(err))
   })
 
+//---------------- GET ONE IDS LIST ------------- GET ONE IDS LIST ------------ GET ONE IDS LIST ------------ GET ONE IDS LIST 
+router.get("/getIdsListONE/:listId", async (req, res) => {
 
+  // const listId = req.body.listId
+console.log("req.params.listId")
+console.log(req.params.listId)
 
+    try{
+      const userListONE = await  List.findById(req.params.listId).populate("TMDBids")
+      res.status(200).json({TMDBids: userListONE.TMDBids})
+    }catch(err){
+      console.log(err.message)
+    }
 
+    // const id = req.params.listId
+
+    // List
+    //   .findById(id).populate("TMDBids")
+    //   .then(response => res.json(response))
+    //   .catch(err => res.status(500).json(err))
+  })
 
 module.exports = router

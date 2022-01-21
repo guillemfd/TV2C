@@ -1,7 +1,7 @@
 // import './MovieDetailsPage.css'
 import { useEffect, useState } from "react"
 import { useParams, Link } from "react-router-dom"
-import { getOneTV } from "../../../services/tv.service"
+import { deleteTVWatched, getOneTV, seenTVList } from "../../../services/tv.service"
 import Spinner from "../../../components/Spinner/Spinner"
 import {Carousel} from 'react-bootstrap'
 import { toSeeTVList } from '../../../services/tv.service'
@@ -50,6 +50,11 @@ function TVDetailsPage(props) {
 
     const handleToSeeTVList = () => {
         toSeeTVList (oneTV.id, user._id)
+    }
+
+    const handleSeenTVList = () => {
+        deleteTVWatched (oneTV.id, user._id)
+        seenTVList (oneTV.id, user._id)
     }
 
     const handleToCustomListONE = () => {
@@ -116,31 +121,38 @@ function TVDetailsPage(props) {
                 {oneTV.networks.name &&
                     <p className="description" style={{marginTop: '-15px'}}>The first episode was released on {oneTV.first_air_date}, and the last one on {oneTV.last_episode_to_air.air_date}. You can watch it at {oneTV.networks[0].name}.</p>}
                     <p className="description">Rating: {oneTV.vote_average}/10 ({oneTV.vote_count} votes)</p>
+                {/* {oneTV.production_companies[0].logo_path &&    
                     <p className="description">
-                        {/* <img className="company-logo" src={IMG_API + oneTV.production_companies[0].logo_path} alt={oneTV.title}/> */}
+                        <img className="company-logo" src={IMG_API + oneTV.production_companies[0].logo_path} alt={oneTV.title}/>
                     </p>
+                }     */}
 
                 {isLoggedIn &&
                     <div>
-                        <button className="card-button" onClick={() => handleToSeeTVList(oneTV.id)}>Add to {user.username}'s TV Series to see</button>
+                        <div>
+                            <button className="card-button" onClick={() => handleToSeeTVList(oneTV.id)}>Add to TV Series to see list</button>
+                        </div>
+                        <div>
+                            <button className="card-button" style={{backgroundColor: 'coral'}} onClick={() => handleSeenTVList(oneTV.id)}>Already seen!</button>
+                        </div>
                     </div>
-                    }
+                }
 
                 {getUser.myLists[0] &&
                     <div>
-                        <button className="card-button" onClick={() => handleToCustomListONE(oneTV.id)}>Add to "{getUser.myLists[0]}" list</button>
+                        <button className="card-button" onClick={() => handleToCustomListONE(oneTV.id)}>My list one</button>
                     </div>                    
                     }
 
                 {getUser.myLists[1] &&
                     <div>
-                        <button className="card-button" onClick={() => handleToCustomListTWO(oneTV.id)}>Add to "{getUser.myLists[1]}" list</button>
+                        <button className="card-button" onClick={() => handleToCustomListTWO(oneTV.id)}>My list two</button>
                     </div>                    
                     }
 
                 {getUser.myLists[2] &&
                     <div>
-                        <button className="card-button" onClick={() => handleToCustomListTHREE(oneTV.id)}>Add to "{getUser.myLists[2]}" list</button>
+                        <button className="card-button" onClick={() => handleToCustomListTHREE(oneTV.id)}>My list three</button>
                     </div>                    
                     }
                     
